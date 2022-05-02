@@ -35,7 +35,7 @@ public class ClickGUI extends GuiScreen {
                 final Button button = panel.getButtons().get(i);
 
                 Gui.drawRect(panel.getX(), panel.getY() + 20 + (20 * i), panel.getX() + panel.getWidth(), panel.getY() + (20 * i) + 40, Integer.MIN_VALUE);
-                this.drawString(mc.fontRenderer,(button.getModule().isEnabled() ? "§a" : "§c") + button.getModule().getLabel(), panel.getX() + 2, panel.getY() + 20 + (20 * i) + 7, 0xffffff);
+                this.drawString(mc.fontRenderer,(button.getModule().isEnabled() ? "§a" : "") + button.getModule().getLabel(), panel.getX() + 2, panel.getY() + 20 + (20 * i) + 7, 0xffffff);
             }
 
             // Drag panel
