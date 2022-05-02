@@ -163,14 +163,14 @@ public class EntityClientPlayerMP extends EntityPlayerSP {
      * Sends a chat message from the player. Args: chatMessage
      */
     public void sendChatMessage(String par1Str) {
-        Mod mod = ModManager.getMod(par1Str.replace(".t ", ""));
+        Mod mod = ModManager.getMod(par1Str.toLowerCase().replace(".t ", ""));
 //        this.addChatMessage(par1Str.startsWith(".t ")?"1":"0");
-        if (par1Str.startsWith(".t ")) {
+        if (par1Str.toLowerCase().startsWith(".t ")) {
             if (mod != null) {
                 mod.toggle();
-                this.addChatMessage(("§8[§c§lFDP§6§lClient§8] §f" + par1Str + " toggled"));
+                this.addChatMessage(("§8[§c§lFDP§6§lClient§8] §f" + par1Str.toLowerCase().replace(".t ", "") + " toggled"));
             }else{
-                this.addChatMessage(("§8[§c§lFDP§6§lClient§8] §f" + par1Str + " not found"));
+                this.addChatMessage(("§8[§c§lFDP§6§lClient§8] §f" + par1Str.toLowerCase().replace(".t ", "") + " not found"));
             }
         } else {
             this.sendQueue.addToSendQueue(new Packet3Chat(par1Str));

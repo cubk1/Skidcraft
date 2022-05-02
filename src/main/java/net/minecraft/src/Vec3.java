@@ -26,7 +26,7 @@ public class Vec3
         return new Vec3(fakePool, par0, par2, par4);
     }
 
-    protected Vec3(Vec3Pool par1Vec3Pool, double par2, double par4, double par6)
+    public Vec3(Vec3Pool par1Vec3Pool, double par2, double par4, double par6)
     {
         if (par2 == -0.0D)
         {
@@ -48,7 +48,28 @@ public class Vec3
         this.zCoord = par6;
         this.myVec3LocalPool = par1Vec3Pool;
     }
+    public Vec3(double x, double y, double z)
+    {
+        if (x == -0.0D)
+        {
+            x = 0.0D;
+        }
 
+        if (y == -0.0D)
+        {
+            y = 0.0D;
+        }
+
+        if (z == -0.0D)
+        {
+            z = 0.0D;
+        }
+
+        this.xCoord = x;
+        this.yCoord = y;
+        this.zCoord = z;
+        this.myVec3LocalPool =fakePool;
+    }
     /**
      * Sets the x,y,z components of the vector as specified.
      */

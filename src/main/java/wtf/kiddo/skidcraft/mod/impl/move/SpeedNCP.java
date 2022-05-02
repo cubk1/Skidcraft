@@ -10,26 +10,28 @@ import wtf.kiddo.skidcraft.utils.MoveUtils;
  * Author: LiquidBounce
  */
 public final class SpeedNCP extends Mod {
+
     public SpeedNCP() {
+
         super("SpeedNCP", Category.MOVE);
 //        this.setEnabled(false);
+        this.setKey(47);
     }
 
     @EventListener
     public void onUpdateEvent(final UpdateEvent event) {
-        mc.thePlayer.setSprinting(true);
         if(MoveUtils.isMoving()){
             if (mc.thePlayer.onGround) {
                 mc.thePlayer.jump();
-                mc.thePlayer.motionX *= 1.01;
-                mc.thePlayer.motionZ *= 1.01;
-            }
-            mc.thePlayer.motionY -= 0.00099999;
+//            mc.thePlayer.motionY -= 0.00099999;
         } else {
             mc.thePlayer.motionX = 0.0;
             mc.thePlayer.motionZ = 0.0;
         }
     }
+
+
+}
 
     @Override
     protected void onEnable() {

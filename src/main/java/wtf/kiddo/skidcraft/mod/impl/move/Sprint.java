@@ -13,7 +13,7 @@ import wtf.kiddo.skidcraft.mod.Mod;
 public final class Sprint extends Mod {
     public Sprint() {
         super("Sprint", Category.MOVE);
-//        this.setEnabled(false);
+        this.setEnabled(true);
     }
 
     @EventListener
