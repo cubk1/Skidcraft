@@ -1,5 +1,7 @@
 package net.minecraft.src;
 
+import wtf.kiddo.skidcraft.gui.screen.GuiAltLogin;
+
 import java.util.Iterator;
 import java.util.List;
 
@@ -35,7 +37,8 @@ public class GuiDisconnected extends GuiScreen
     {
         StringTranslate var1 = StringTranslate.getInstance();
         this.buttonList.clear();
-        this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 120 + 12, var1.translateKey("gui.toMenu")));
+        this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 120 + 24, var1.translateKey("gui.toMenu")));
+        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 + 120, "AltLogin"));
 
         if (this.field_74247_c != null)
         {
@@ -55,6 +58,10 @@ public class GuiDisconnected extends GuiScreen
         if (par1GuiButton.id == 0)
         {
             this.mc.displayGuiScreen(this.field_98095_n);
+        }
+        if (par1GuiButton.id == 1)
+        {
+            this.mc.displayGuiScreen(new GuiAltLogin(new GuiMultiplayer(new GuiMainMenu())));
         }
     }
 
