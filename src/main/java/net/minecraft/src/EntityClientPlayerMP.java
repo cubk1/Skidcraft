@@ -141,6 +141,8 @@ public class EntityClientPlayerMP extends EntityPlayerSP {
     @Override
     public void moveEntity(double par1, double par3, double par5) {
         final MotionEvent event = new MotionEvent(par1, par3, par5);
+
+        Client.INSTANCE.getEventBus().post(event);
         super.moveEntity(event.getX(), event.getY(), event.getZ());
     }
 
