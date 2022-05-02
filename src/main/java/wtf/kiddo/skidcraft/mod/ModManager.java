@@ -3,7 +3,15 @@ package wtf.kiddo.skidcraft.mod;
 import me.bush.eventbus.annotation.EventListener;
 import wtf.kiddo.skidcraft.Client;
 import wtf.kiddo.skidcraft.event.KeyInputEvent;
+import wtf.kiddo.skidcraft.mod.impl.combat.KillAura;
+import wtf.kiddo.skidcraft.mod.impl.move.AirJump;
+import wtf.kiddo.skidcraft.mod.impl.move.SpeedNCP;
+import wtf.kiddo.skidcraft.mod.impl.move.Sprint;
+import wtf.kiddo.skidcraft.mod.impl.move.Strafe;
+import wtf.kiddo.skidcraft.mod.impl.visuals.ESP;
 import wtf.kiddo.skidcraft.mod.impl.visuals.HUD;
+import wtf.kiddo.skidcraft.mod.impl.world.NoFall;
+import wtf.kiddo.skidcraft.mod.impl.world.ServerCrasher;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +22,7 @@ import java.util.Map;
  * Created: 2022/5/1
  */
 public final class ModManager {
-    private final Map<String, Mod> map = new HashMap<>();
+    private static final Map<String, Mod> map = new HashMap<>();
 
     public ModManager() {
         Client.INSTANCE.getEventBus().subscribe(this);
@@ -22,6 +30,14 @@ public final class ModManager {
 
     public void initializeMods() {
         registerMod(HUD.class);
+        registerMod(AirJump.class);
+        registerMod(Sprint.class);
+        registerMod(ServerCrasher.class);
+        registerMod(NoFall.class);
+        registerMod(KillAura.class);
+        registerMod(SpeedNCP.class);
+        registerMod(Strafe.class);
+        registerMod(ESP.class);
     }
 
     private void registerMod(Class<? extends Mod> moduleClass) {
@@ -34,7 +50,7 @@ public final class ModManager {
         }
     }
 
-    public Map<String, Mod> getModMap() {
+    public static Map<String, Mod> getModMap() {
         return map;
     }
 
@@ -66,7 +82,7 @@ public final class ModManager {
         return mods;
     }
 
-    public Mod getMod(String name) {
+    public static Mod getMod(String name) {
         return getModMap().get(name.toLowerCase());
     }
 

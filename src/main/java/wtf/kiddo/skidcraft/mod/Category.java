@@ -9,7 +9,8 @@ public enum Category {
     WORLD("b"),
     UTILITY("c"),
     VISUALS("d"),
-    GLOBAL("e");
+    GLOBAL("e"),
+    MOVE("f");
 
     private final String character;
 

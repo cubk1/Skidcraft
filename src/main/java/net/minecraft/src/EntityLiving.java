@@ -200,8 +200,8 @@ public abstract class EntityLiving extends Entity
 
     /** Holds the living entity age, used to control the despawn. */
     protected int entityAge = 0;
-    protected float moveStrafing;
-    protected float moveForward;
+    public float moveStrafing;
+    public float moveForward;
     protected float randomYawVelocity;
 
     /** used to check whether entity is jumping. */

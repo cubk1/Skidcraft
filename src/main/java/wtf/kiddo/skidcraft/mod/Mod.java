@@ -15,7 +15,7 @@ public abstract class Mod {
     private boolean enabled;
     private int key;
     private Category category;
-    private final Minecraft mc = Minecraft.getMinecraft();
+    public final Minecraft mc = Minecraft.getMinecraft();
 
     public Mod(String label,Category category) {
         this.label = label;
