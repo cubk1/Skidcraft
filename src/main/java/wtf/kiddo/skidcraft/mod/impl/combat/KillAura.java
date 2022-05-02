@@ -14,8 +14,6 @@ public final class KillAura extends Mod {
 
     public KillAura() {
         super("KillAura", Category.COMBAT);
-//        this.setEnabled(true);
-        this.setKey(19);
     }
 
     @EventListener

@@ -1,8 +1,10 @@
 package wtf.kiddo.skidcraft.mod.impl.visuals;
 
 import me.bush.eventbus.annotation.EventListener;
+import net.minecraft.client.Minecraft;
 import net.minecraft.src.Packet39AttachEntity;
 import wtf.kiddo.skidcraft.Client;
+import wtf.kiddo.skidcraft.event.KeyInputEvent;
 import wtf.kiddo.skidcraft.event.PacketEvent;
 import wtf.kiddo.skidcraft.event.Render2DEvent;
 import wtf.kiddo.skidcraft.mod.Category;

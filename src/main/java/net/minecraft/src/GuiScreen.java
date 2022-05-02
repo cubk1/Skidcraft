@@ -5,6 +5,7 @@ import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.client.Minecraft;
@@ -21,6 +22,7 @@ public class GuiScreen extends Gui
 
     /** The width of the screen object. */
     public int width;
+    private long lastMouseEvent;
 
     /** The height of the screen object. */
     public int height;
@@ -28,6 +30,7 @@ public class GuiScreen extends Gui
     /** A list of all the buttons in this container. */
     protected List buttonList = new ArrayList();
     public boolean allowUserInput = false;
+    private int touchValue;
 
     /** The FontRenderer used by GuiScreen */
     protected FontRenderer fontRenderer;
@@ -122,6 +125,13 @@ public class GuiScreen extends Gui
         }
     }
 
+    protected void mouseReleased(int mouseX, int mouseY, int state) {
+        if (this.selectedButton != null && state == 0) {
+            this.selectedButton.mouseReleased(mouseX, mouseY);
+            this.selectedButton = null;
+        }
+    }
+
     /**
      * Called when the mouse is moved or a mouse button is released.  Signature: (mouseX, mouseY, which) which==-1 is
      * mouseMove, which==0 or which==1 is mouseUp
@@ -181,37 +191,33 @@ public class GuiScreen extends Gui
     /**
      * Handles mouse input.
      */
-    public void handleMouseInput()
-    {
-        int var1 = Mouse.getEventX() * this.width / this.mc.displayWidth;
-        int var2 = this.height - Mouse.getEventY() * this.height / this.mc.displayHeight - 1;
+    public void handleMouseInput() {
+        int i = Mouse.getEventX() * this.width / this.mc.displayWidth;
+        int j = this.height - Mouse.getEventY() * this.height / this.mc.displayHeight - 1;
+        int k = Mouse.getEventButton();
 
-        if (Mouse.getEventButtonState())
-        {
-            if (this.mc.gameSettings.touchscreen && this.field_92018_d++ > 0)
-            {
+        if (Mouse.getEventButtonState()) {
+            if (this.mc.gameSettings.touchscreen && this.touchValue++ > 0) {
                 return;
             }
 
-            this.eventButton = Mouse.getEventButton();
-            this.field_85043_c = Minecraft.getSystemTime();
-            this.mouseClicked(var1, var2, this.eventButton);
-        }
-        else if (Mouse.getEventButton() != -1)
-        {
-            if (this.mc.gameSettings.touchscreen && --this.field_92018_d > 0)
-            {
+            this.eventButton = k;
+            this.lastMouseEvent = Minecraft.getSystemTime();
+            this.mouseClicked(i, j, this.eventButton);
+        } else if (k != -1) {
+            if (this.mc.gameSettings.touchscreen && --this.touchValue > 0) {
                 return;
             }
 
             this.eventButton = -1;
-            this.mouseMovedOrUp(var1, var2, Mouse.getEventButton());
+            this.mouseReleased(i, j, k);
+        } else if (this.eventButton != -1 && this.lastMouseEvent > 0L) {
+            long l = Minecraft.getSystemTime() - this.lastMouseEvent;
+            this.mouseClickMove(i, j, this.eventButton, l);
         }
-        else if (this.eventButton != -1 && this.field_85043_c > 0L)
-        {
-            long var3 = Minecraft.getSystemTime() - this.field_85043_c;
-            this.func_85041_a(var1, var2, this.eventButton, var3);
-        }
+    }
+
+    protected void mouseClickMove(int mouseX, int mouseY, int clickedMouseButton, long timeSinceLastClick) {
     }
 
     /**
