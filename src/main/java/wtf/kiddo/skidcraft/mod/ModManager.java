@@ -4,11 +4,9 @@ import me.bush.eventbus.annotation.EventListener;
 import wtf.kiddo.skidcraft.Client;
 import wtf.kiddo.skidcraft.event.KeyInputEvent;
 import wtf.kiddo.skidcraft.mod.impl.combat.KillAura;
-import wtf.kiddo.skidcraft.mod.impl.move.AirJump;
-import wtf.kiddo.skidcraft.mod.impl.move.SpeedNCP;
-import wtf.kiddo.skidcraft.mod.impl.move.Sprint;
-import wtf.kiddo.skidcraft.mod.impl.move.Strafe;
+import wtf.kiddo.skidcraft.mod.impl.move.*;
 import wtf.kiddo.skidcraft.mod.impl.visuals.ESP;
+import wtf.kiddo.skidcraft.mod.impl.visuals.FreeCam;
 import wtf.kiddo.skidcraft.mod.impl.visuals.HUD;
 import wtf.kiddo.skidcraft.mod.impl.world.NoFall;
 import wtf.kiddo.skidcraft.mod.impl.world.ServerCrasher;
@@ -38,6 +36,8 @@ public final class ModManager {
         registerMod(SpeedNCP.class);
         registerMod(Strafe.class);
         registerMod(ESP.class);
+        registerMod(FreeCam.class);
+        registerMod(NoSlowNCP.class);
     }
 
     private void registerMod(Class<? extends Mod> moduleClass) {

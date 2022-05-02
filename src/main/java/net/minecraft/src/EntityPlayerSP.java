@@ -1,6 +1,9 @@
 package net.minecraft.src;
 
 import net.minecraft.client.Minecraft;
+import wtf.kiddo.skidcraft.Client;
+import wtf.kiddo.skidcraft.event.LBUpdateEvent;
+import wtf.kiddo.skidcraft.event.MotionEvent;
 
 public class EntityPlayerSP extends EntityPlayer
 {
@@ -78,6 +81,7 @@ public class EntityPlayerSP extends EntityPlayer
      */
     public void onLivingUpdate()
     {
+        Client.INSTANCE.getEventBus().post(new LBUpdateEvent(true));
         if (this.sprintingTicksLeft > 0)
         {
             --this.sprintingTicksLeft;

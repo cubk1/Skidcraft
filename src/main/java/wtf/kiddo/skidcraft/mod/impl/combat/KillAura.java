@@ -2,6 +2,7 @@ package wtf.kiddo.skidcraft.mod.impl.combat;
 
 import me.bush.eventbus.annotation.EventListener;
 import net.minecraft.src.*;
+import wtf.kiddo.skidcraft.event.LBUpdateEvent;
 import wtf.kiddo.skidcraft.event.PacketEvent;
 import wtf.kiddo.skidcraft.event.UpdateEvent;
 import wtf.kiddo.skidcraft.mod.Category;
@@ -19,7 +20,7 @@ public final class KillAura extends Mod {
     }
 
     @EventListener
-    public void onUpdate(final UpdateEvent event) {
+    public void onUpdate(final LBUpdateEvent event) {
         for (Object en : mc.theWorld.loadedEntityList) {
             if (mc.thePlayer.getDistanceToEntity((Entity) en) < 4f && en != mc.thePlayer && en instanceof EntityLiving) {
                 rotation = RotationUtils.getRotations4Attack(((Entity) en));
@@ -27,7 +28,9 @@ public final class KillAura extends Mod {
                 mc.thePlayer.rotationPitch = rotation[1];
                 mc.thePlayer.swingItem();
 //                mc.playerController.attackEntity(mc.thePlayer, (Entity) en);
+//                mc.gameSettings.keyBindUseItem.pressed = false;
                 if(mc.thePlayer.ticksExisted % 2 == 0) mc.thePlayer.sendQueue.addToSendQueue(new Packet7UseEntity(mc.thePlayer.entityId, ((EntityLiving) en).entityId, 1));
+//                mc.gameSettings.keyBindUseItem.pressed = true;
                 return;
             }
         }

