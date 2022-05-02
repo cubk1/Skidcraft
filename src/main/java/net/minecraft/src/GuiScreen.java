@@ -219,23 +219,11 @@ public class GuiScreen extends Gui
      */
     public void handleKeyboardInput()
     {
-        if (Keyboard.getEventKeyState())
+        char c = Keyboard.getEventCharacter();
+        int k = Keyboard.getEventKey();
+        if (Keyboard.getEventKeyState() || (k == 0 && Character.isDefined(c)))
         {
-            int var1 = Keyboard.getEventKey();
-            char var2 = Keyboard.getEventCharacter();
-
-            if (var1 == 87)
-            {
-                this.mc.toggleFullscreen();
-                return;
-            }
-
-            if (isMacOs && var1 == 28 && var2 == 0)
-            {
-                var1 = 29;
-            }
-
-            this.keyTyped(var2, var1);
+            this.keyTyped(c, k);
         }
     }
 

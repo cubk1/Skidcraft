@@ -8,6 +8,7 @@ import java.net.Socket;
 import java.util.Collections;
 import java.util.List;
 import org.lwjgl.input.Keyboard;
+import wtf.kiddo.skidcraft.gui.screen.GuiEaglercraftConnect;
 
 public class GuiMultiplayer extends GuiScreen
 {
@@ -114,6 +115,7 @@ public class GuiMultiplayer extends GuiScreen
         this.buttonList.add(new GuiButton(3, this.width / 2 + 4 + 50, this.height - 52, 100, 20, var1.translateKey("selectServer.add")));
         this.buttonList.add(new GuiButton(8, this.width / 2 + 4, this.height - 28, 70, 20, var1.translateKey("selectServer.refresh")));
         this.buttonList.add(new GuiButton(0, this.width / 2 + 4 + 76, this.height - 28, 75, 20, var1.translateKey("gui.cancel")));
+        this.buttonList.add(new GuiButton(69, 5, 5, 130, 20, "Eaglercraft Connect"));
         boolean var2 = this.selectedServer >= 0 && this.selectedServer < this.serverSlotContainer.getSize();
         this.buttonSelect.enabled = var2;
         this.field_96289_p.enabled = var2;
@@ -201,6 +203,10 @@ public class GuiMultiplayer extends GuiScreen
             else if (par1GuiButton.id == 8)
             {
                 this.mc.displayGuiScreen(new GuiMultiplayer(this.parentScreen));
+            }
+            else if (par1GuiButton.id == 69)
+            {
+                this.mc.displayGuiScreen(new GuiEaglercraftConnect());
             }
             else
             {

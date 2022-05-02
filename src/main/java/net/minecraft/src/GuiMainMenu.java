@@ -111,11 +111,6 @@ public class GuiMainMenu extends GuiScreen
             this.field_92025_p = "" + EnumChatFormatting.BOLD + "Notice!" + EnumChatFormatting.RESET + " Java 1.5 compatibility will be dropped in Minecraft 1.6";
             this.field_104024_v = "http://tinyurl.com/javappc";
         }
-
-        if (this.field_92025_p.length() == 0)
-        {
-            (new Thread(new RunnableTitleScreen(this), "1.6 Update Check Thread")).start();
-        }
     }
 
     /**
