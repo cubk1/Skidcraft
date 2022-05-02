@@ -27,7 +27,7 @@ public final class HUD extends Mod {
 
     @EventListener
     public void onRender2DEvent(final Render2DEvent event) {
-        float posy = 10;
+        float posy = 20;
         for (Mod mod : Client.INSTANCE.getModManager().getModMap().values()) {
             if(mod.isEnabled()) {
                 getMc().fontRenderer.drawStringWithShadow(mod.getLabel(),4, (int) posy,ColorUtils.rainbow(1));

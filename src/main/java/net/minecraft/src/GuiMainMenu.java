@@ -14,6 +14,7 @@ import java.util.Random;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
+import wtf.kiddo.skidcraft.gui.screen.GuiAltLogin;
 
 public class GuiMainMenu extends GuiScreen
 {
@@ -187,7 +188,6 @@ public class GuiMainMenu extends GuiScreen
             this.buttonList.add(new GuiButton(0, this.width / 2 - 100, var4 + 72 + 12, 98, 20, var2.translateKey("menu.options")));
             this.buttonList.add(new GuiButton(4, this.width / 2 + 2, var4 + 72 + 12, 98, 20, var2.translateKey("menu.quit")));
         }
-
         this.buttonList.add(new GuiButtonLanguage(5, this.width / 2 - 124, var4 + 72 + 12));
         Object var5 = this.field_104025_t;
 
@@ -231,8 +231,8 @@ public class GuiMainMenu extends GuiScreen
     {
         this.buttonList.add(new GuiButton(1, this.width / 2 - 100, par1, par3StringTranslate.translateKey("menu.singleplayer")));
         this.buttonList.add(new GuiButton(2, this.width / 2 - 100, par1 + par2 * 1, par3StringTranslate.translateKey("menu.multiplayer")));
+        this.buttonList.add(new GuiButton(14, this.width / 2 - 100, par1 + par2 * 2, "Alt Login"));
     }
-
     /**
      * Adds Demo buttons on Main Menu for players who are playing Demo.
      */
@@ -257,6 +257,11 @@ public class GuiMainMenu extends GuiScreen
         if (par1GuiButton.id == 0)
         {
             this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
+        }
+
+        if (par1GuiButton.id == 14)
+        {
+            this.mc.displayGuiScreen(new GuiAltLogin(this));
         }
 
         if (par1GuiButton.id == 5)

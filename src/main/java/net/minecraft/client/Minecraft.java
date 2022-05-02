@@ -129,6 +129,8 @@ import wtf.kiddo.skidcraft.event.KeyInputEvent;
 
 public abstract class Minecraft implements Runnable, IPlayerUsage
 {
+    public static String sessions = "client_" + new Random().nextInt(114514);
+
     /** A 10MiB preallocation to ensure the heap is reasonably sized. */
     public static byte[] memoryReserve = new byte[10485760];
     private final ILogAgent field_94139_O = new LogAgent("Minecraft-Client", " [CLIENT]", (new File(getMinecraftDir(), "output-client.log")).getAbsolutePath());
@@ -2186,8 +2188,8 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
         boolean var2 = false;
         boolean var3 = true;
         boolean var4 = false;
-        String var5 = /*"Player" + getSystemTime() % 1000L*/ "client_" + new Random().nextInt(114514);
-        String var6 = var5;
+        String user = sessions;
+        String var6 = user;
 
         if (par0ArrayOfStr.length > 0)
         {
@@ -2246,7 +2248,7 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
 
         if (var6.contains("@") && var7.length() <= 1)
         {
-            var6 = var5;
+            var6 = user;
         }
 
         var1.put("demo", "" + var2);
