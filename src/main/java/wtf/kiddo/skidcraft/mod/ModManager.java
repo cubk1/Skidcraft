@@ -41,6 +41,7 @@ public final class ModManager {
         registerMod(ClickGui.class);
         registerMod(FullBright.class);
         registerMod(Fly.class);
+        registerMod(AutoMath.class);
     }
 
     private void registerMod(Class<? extends Mod> moduleClass) {

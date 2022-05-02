@@ -3,8 +3,11 @@ package net.minecraft.src;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
+import wtf.kiddo.skidcraft.Client;
+import wtf.kiddo.skidcraft.event.ChatEvent;
 
 public class GuiNewChat extends Gui
 {
@@ -153,6 +156,7 @@ public class GuiNewChat extends Gui
     {
         this.func_96129_a(par1Str, par2, this.mc.ingameGUI.getUpdateCounter(), false);
         this.mc.getLogAgent().logInfo("[CHAT] " + par1Str);
+        Client.INSTANCE.getEventBus().post(new ChatEvent(par1Str));
     }
 
     private void func_96129_a(String par1Str, int par2, int par3, boolean par4)
