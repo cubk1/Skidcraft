@@ -1,9 +1,6 @@
-package wtf.kiddo.skidcraft.mod.impl.visuals;
+package wtf.kiddo.skidcraft.mod.impl.render;
 
-import me.bush.eventbus.annotation.EventListener;
 import org.lwjgl.input.Keyboard;
-import wtf.kiddo.skidcraft.Client;
-import wtf.kiddo.skidcraft.event.Render2DEvent;
 import wtf.kiddo.skidcraft.gui.clickgui.ClickGUI;
 import wtf.kiddo.skidcraft.mod.Category;
 import wtf.kiddo.skidcraft.mod.Mod;
@@ -14,7 +11,7 @@ import wtf.kiddo.skidcraft.mod.Mod;
  */
 public final class ClickGui extends Mod {
     public ClickGui() {
-        super("ClickGui", Category.VISUALS);
+        super("ClickGui", Category.Render);
         this.setKey(Keyboard.KEY_RSHIFT);
     }
 

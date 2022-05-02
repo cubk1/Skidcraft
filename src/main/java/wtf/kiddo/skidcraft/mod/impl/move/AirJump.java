@@ -3,14 +3,13 @@ package wtf.kiddo.skidcraft.mod.impl.move;
 import me.bush.eventbus.annotation.EventListener;
 import net.minecraft.client.Minecraft;
 import wtf.kiddo.skidcraft.event.KeyInputEvent;
-import wtf.kiddo.skidcraft.event.MotionEvent;
 import wtf.kiddo.skidcraft.mod.Category;
 import wtf.kiddo.skidcraft.mod.Mod;
 
 
 public final class AirJump extends Mod {
     public AirJump() {
-        super("AirJump", Category.MOVE);
+        super("AirJump", Category.Movement);
 //        this.setEnabled(false);
     }
 

@@ -12,7 +12,7 @@ import wtf.kiddo.skidcraft.mod.Mod;
  */
 public final class NoFall extends Mod {
     public NoFall() {
-        super("NoFall", Category.WORLD);
+        super("NoFall", Category.World);
 //        this.setEnabled(true);
     }
 

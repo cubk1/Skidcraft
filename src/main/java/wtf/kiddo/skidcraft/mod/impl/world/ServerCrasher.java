@@ -1,10 +1,6 @@
 package wtf.kiddo.skidcraft.mod.impl.world;
 
-import me.bush.eventbus.annotation.EventListener;
 import net.minecraft.src.*;
-import wtf.kiddo.skidcraft.Client;
-import wtf.kiddo.skidcraft.event.PacketEvent;
-import wtf.kiddo.skidcraft.event.Render2DEvent;
 import wtf.kiddo.skidcraft.mod.Category;
 import wtf.kiddo.skidcraft.mod.Mod;
 
@@ -14,7 +10,7 @@ import wtf.kiddo.skidcraft.mod.Mod;
  */
 public final class ServerCrasher extends Mod {
     public ServerCrasher() {
-        super("ServerCrasher", Category.WORLD);
+        super("ServerCrasher", Category.World);
 //        this.setEnabled(true);
     }
 

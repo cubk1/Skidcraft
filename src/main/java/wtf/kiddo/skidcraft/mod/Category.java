@@ -5,12 +5,10 @@ package wtf.kiddo.skidcraft.mod;
  * Created: 2022/5/1
  */
 public enum Category {
-    COMBAT("a"),
-    WORLD("b"),
-    UTILITY("c"),
-    VISUALS("d"),
-    GLOBAL("e"),
-    MOVE("f");
+    Combat("a"),
+    World("b"),
+    Render("d"),
+    Movement("f");
 
     private final String character;
 

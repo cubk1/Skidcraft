@@ -1,11 +1,7 @@
-package wtf.kiddo.skidcraft.mod.impl.visuals;
+package wtf.kiddo.skidcraft.mod.impl.render;
 
 import me.bush.eventbus.annotation.EventListener;
-import net.minecraft.client.Minecraft;
-import net.minecraft.src.Packet39AttachEntity;
 import wtf.kiddo.skidcraft.Client;
-import wtf.kiddo.skidcraft.event.KeyInputEvent;
-import wtf.kiddo.skidcraft.event.PacketEvent;
 import wtf.kiddo.skidcraft.event.Render2DEvent;
 import wtf.kiddo.skidcraft.mod.Category;
 import wtf.kiddo.skidcraft.mod.Mod;
@@ -16,7 +12,7 @@ import wtf.kiddo.skidcraft.mod.Mod;
  */
 public final class HUD extends Mod {
     public HUD() {
-        super("HUD", Category.VISUALS);
+        super("HUD", Category.Render);
         this.setEnabled(true);
     }
 

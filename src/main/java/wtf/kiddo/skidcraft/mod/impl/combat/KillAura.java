@@ -13,7 +13,7 @@ public final class KillAura extends Mod {
     float[] rotation = new float[2];
 
     public KillAura() {
-        super("KillAura", Category.COMBAT);
+        super("KillAura", Category.Combat);
     }
 
     @EventListener

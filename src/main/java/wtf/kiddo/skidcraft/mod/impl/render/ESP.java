@@ -1,16 +1,10 @@
-package wtf.kiddo.skidcraft.mod.impl.visuals;
+package wtf.kiddo.skidcraft.mod.impl.render;
 
 import me.bush.eventbus.annotation.EventListener;
-import net.minecraft.src.Entity;
-import net.minecraft.src.Packet39AttachEntity;
 import org.lwjgl.opengl.GL11;
-import wtf.kiddo.skidcraft.Client;
-import wtf.kiddo.skidcraft.event.PacketEvent;
 import wtf.kiddo.skidcraft.event.Render2DEvent;
 import wtf.kiddo.skidcraft.mod.Category;
 import wtf.kiddo.skidcraft.mod.Mod;
-import wtf.kiddo.skidcraft.utils.RenderUtils;
-import wtf.kiddo.skidcraft.utils.RotationUtils;
 
 /**
  * Author: zcy
@@ -18,7 +12,7 @@ import wtf.kiddo.skidcraft.utils.RotationUtils;
  */
 public final class ESP extends Mod {
     public ESP() {
-        super("ESP", Category.VISUALS);
+        super("ESP", Category.Render);
         this.setEnabled(true);
     }
 

@@ -9,14 +9,13 @@ import wtf.kiddo.skidcraft.mod.impl.move.AirJump;
 import wtf.kiddo.skidcraft.mod.impl.move.SpeedNCP;
 import wtf.kiddo.skidcraft.mod.impl.move.Sprint;
 import wtf.kiddo.skidcraft.mod.impl.move.Strafe;
-import wtf.kiddo.skidcraft.mod.impl.visuals.ClickGui;
-import wtf.kiddo.skidcraft.mod.impl.visuals.ESP;
-import wtf.kiddo.skidcraft.mod.impl.visuals.HUD;
+import wtf.kiddo.skidcraft.mod.impl.render.ClickGui;
+import wtf.kiddo.skidcraft.mod.impl.render.ESP;
+import wtf.kiddo.skidcraft.mod.impl.render.HUD;
 import wtf.kiddo.skidcraft.mod.impl.world.NoFall;
 import wtf.kiddo.skidcraft.mod.impl.world.ServerCrasher;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 

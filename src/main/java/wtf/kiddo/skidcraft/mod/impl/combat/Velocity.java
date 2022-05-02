@@ -1,8 +1,6 @@
 package wtf.kiddo.skidcraft.mod.impl.combat;
 
 import me.bush.eventbus.annotation.EventListener;
-import wtf.kiddo.skidcraft.Client;
-import wtf.kiddo.skidcraft.event.Render2DEvent;
 import wtf.kiddo.skidcraft.event.UpdateEvent;
 import wtf.kiddo.skidcraft.mod.Category;
 import wtf.kiddo.skidcraft.mod.Mod;
@@ -13,7 +11,7 @@ import wtf.kiddo.skidcraft.mod.Mod;
  */
 public final class Velocity extends Mod {
     public Velocity() {
-        super("Velocity", Category.COMBAT);
+        super("Velocity", Category.Combat);
     }
 
     @EventListener
