@@ -4,6 +4,9 @@ import me.bush.eventbus.annotation.EventListener;
 import wtf.kiddo.skidcraft.Client;
 import wtf.kiddo.skidcraft.event.KeyInputEvent;
 import wtf.kiddo.skidcraft.mod.impl.combat.KillAura;
+import wtf.kiddo.skidcraft.mod.impl.combat.Velocity;
+import wtf.kiddo.skidcraft.mod.impl.visuals.ClickGui;
+
 import wtf.kiddo.skidcraft.mod.impl.move.*;
 import wtf.kiddo.skidcraft.mod.impl.visuals.ESP;
 import wtf.kiddo.skidcraft.mod.impl.visuals.FreeCam;
@@ -12,6 +15,7 @@ import wtf.kiddo.skidcraft.mod.impl.world.NoFall;
 import wtf.kiddo.skidcraft.mod.impl.world.ServerCrasher;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,9 +25,13 @@ import java.util.Map;
  */
 public final class ModManager {
     private static final Map<String, Mod> map = new HashMap<>();
-
+    private static ArrayList<Mod> modules = new ArrayList<Mod>();
     public ModManager() {
         Client.INSTANCE.getEventBus().subscribe(this);
+    }
+
+    public static ArrayList<Mod> getModules() {
+        return modules;
     }
 
     public void initializeMods() {
@@ -38,13 +46,18 @@ public final class ModManager {
         registerMod(ESP.class);
         registerMod(FreeCam.class);
         registerMod(NoSlowNCP.class);
+        registerMod(Velocity.class);
+        registerMod(ClickGui.class);
     }
 
     private void registerMod(Class<? extends Mod> moduleClass) {
         try {
+
             final Mod createdMod = moduleClass.newInstance();
+
             Client.INSTANCE.getValueManager().registerObject(createdMod.getLabel(),createdMod);
             map.put(createdMod.getLabel().toLowerCase(), createdMod);
+            modules.add(createdMod);
         } catch (Exception exception) {
             exception.printStackTrace();
         }

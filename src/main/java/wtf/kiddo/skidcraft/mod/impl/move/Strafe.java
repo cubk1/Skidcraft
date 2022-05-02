@@ -13,7 +13,6 @@ import wtf.kiddo.skidcraft.utils.MoveUtils;
 public final class Strafe extends Mod {
     public Strafe() {
         super("Strafe", Category.MOVE);
-        this.setEnabled(true);
     }
 
     @EventListener

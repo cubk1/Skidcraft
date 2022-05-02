@@ -11,10 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import javax.swing.JPanel;
 import net.minecraft.src.AchievementList;
 import net.minecraft.src.AnvilSaveConverter;
@@ -2189,7 +2186,7 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
         boolean var2 = false;
         boolean var3 = true;
         boolean var4 = false;
-        String var5 = /*"Player" + getSystemTime() % 1000L*/ "ffc0c_nao_e_loli";
+        String var5 = /*"Player" + getSystemTime() % 1000L*/ "client_" + new Random().nextInt(114514);
         String var6 = var5;
 
         if (par0ArrayOfStr.length > 0)

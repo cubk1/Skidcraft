@@ -39,12 +39,7 @@ class TaskWorldCreation extends TaskLongRunning
         catch (UnsupportedEncodingException var5)
         {
             ;
-        }
-        catch (IOException var6)
-        {
-            ;
-        }
-        catch (Exception var7)
+        } catch (Exception var7)
         {
             this.func_96575_a("Failed");
         }
