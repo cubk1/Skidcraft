@@ -717,7 +717,7 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
             }
         }
 
-        System.gc();
+        //System.gc();
     }
 
     public void run()
@@ -759,7 +759,7 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
                 {
                     this.freeMemory();
                     this.displayGuiScreen(new GuiMemoryErrorScreen());
-                    System.gc();
+                    //System.gc();
                 }
             }
         }
@@ -973,7 +973,7 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
 
         try
         {
-            System.gc();
+            //System.gc();
             AxisAlignedBB.getAABBPool().clearPool();
             this.theWorld.getWorldVec3Pool().clearAndFreeCache();
         }
@@ -984,7 +984,7 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
 
         try
         {
-            System.gc();
+            //System.gc();
             this.loadWorld((WorldClient)null);
         }
         catch (Throwable var2)
@@ -992,7 +992,7 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
             ;
         }
 
-        System.gc();
+        //System.gc();
     }
 
     /**
@@ -1915,7 +1915,7 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
     public void launchIntegratedServer(String par1Str, String par2Str, WorldSettings par3WorldSettings)
     {
         this.loadWorld((WorldClient)null);
-        System.gc();
+        //System.gc();
         ISaveHandler var4 = this.saveLoader.getSaveLoader(par1Str, false);
         WorldInfo var5 = var4.loadWorldInfo();
 
@@ -2064,7 +2064,7 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
             this.thePlayer = null;
         }
 
-        System.gc();
+        //System.gc();
         this.systemTime = 0L;
     }
 
