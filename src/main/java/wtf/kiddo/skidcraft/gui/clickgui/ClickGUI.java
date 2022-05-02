@@ -29,13 +29,13 @@ public class ClickGUI extends GuiScreen {
         for(final Panel panel : panels) {
             // Draw panel
             Gui.drawRect(panel.getX(), panel.getY(), panel.getX() + panel.getWidth(), panel.getY() + 20, new Color(72, 66, 244).hashCode());
-            mc.fontRenderer.drawString(panel.getPanelName(), panel.getX() + 5, panel.getY() + 5, 0xffffff);
+            this.drawString(mc.fontRenderer,panel.getPanelName(), panel.getX() + 5, panel.getY() + 5, 0xffffff);
 
             for(int i = 0; i < panel.getButtons().size(); i++) {
                 final Button button = panel.getButtons().get(i);
 
                 Gui.drawRect(panel.getX(), panel.getY() + 20 + (20 * i), panel.getX() + panel.getWidth(), panel.getY() + (20 * i) + 40, Integer.MIN_VALUE);
-                mc.fontRenderer.drawString((button.getModule().isEnabled() ? "§a" : "§c") + button.getModule().getLabel(), panel.getX() + 2, panel.getY() + 20 + (20 * i) + 7, 0xffffff);
+                this.drawString(mc.fontRenderer,(button.getModule().isEnabled() ? "§a" : "§c") + button.getModule().getLabel(), panel.getX() + 2, panel.getY() + 20 + (20 * i) + 7, 0xffffff);
             }
 
             // Drag panel

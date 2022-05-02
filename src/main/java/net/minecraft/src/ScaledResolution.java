@@ -1,5 +1,7 @@
 package net.minecraft.src;
 
+import net.minecraft.client.Minecraft;
+
 public class ScaledResolution
 {
     private int scaledWidth;
@@ -29,6 +31,10 @@ public class ScaledResolution
         this.scaledHeightD = (double)this.scaledHeight / (double)this.scaleFactor;
         this.scaledWidth = MathHelper.ceiling_double_int(this.scaledWidthD);
         this.scaledHeight = MathHelper.ceiling_double_int(this.scaledHeightD);
+    }
+
+    public ScaledResolution(Minecraft minecraft) {
+        new ScaledResolution(minecraft.gameSettings, minecraft.displayWidth, minecraft.displayHeight);
     }
 
     public int getScaledWidth()

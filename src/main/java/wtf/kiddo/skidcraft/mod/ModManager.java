@@ -11,6 +11,7 @@ import wtf.kiddo.skidcraft.mod.impl.move.Sprint;
 import wtf.kiddo.skidcraft.mod.impl.move.Strafe;
 import wtf.kiddo.skidcraft.mod.impl.render.ClickGui;
 import wtf.kiddo.skidcraft.mod.impl.render.ESP;
+import wtf.kiddo.skidcraft.mod.impl.render.FullBright;
 import wtf.kiddo.skidcraft.mod.impl.render.HUD;
 import wtf.kiddo.skidcraft.mod.impl.world.NoFall;
 import wtf.kiddo.skidcraft.mod.impl.world.ServerCrasher;
@@ -46,6 +47,7 @@ public final class ModManager {
         registerMod(ESP.class);
         registerMod(Velocity.class);
         registerMod(ClickGui.class);
+        registerMod(FullBright.class);
     }
 
     private void registerMod(Class<? extends Mod> moduleClass) {

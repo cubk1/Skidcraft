@@ -17,7 +17,7 @@ public final class NoFall extends Mod {
     }
 
     @EventListener
-    public void onPacket(final PacketEvent event) {
+    public void onUpdate(final PacketEvent event) {
         if (event.getPacket() instanceof Packet10Flying) {
             ((Packet10Flying) event.getPacket()).onGround = mc.thePlayer.ticksExisted % 2 == 0;
         }
