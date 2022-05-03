@@ -1,6 +1,7 @@
 package wtf.kiddo.skidcraft.event;
 
 import me.bush.eventbus.event.Event;
+import net.minecraft.src.ScaledResolution;
 
 /**
  * Author: zcy
@@ -8,13 +9,19 @@ import me.bush.eventbus.event.Event;
  */
 public final class Render3DEvent extends Event {
     private final float partialTicks;
+    private final ScaledResolution scaledResolution;
 
-    public Render3DEvent(float partialTicks) {
+    public Render3DEvent(float partialTicks, ScaledResolution scaledResolution) {
         this.partialTicks = partialTicks;
+        this.scaledResolution = scaledResolution;
     }
 
     public float getPartialTicks() {
         return partialTicks;
+    }
+
+    public ScaledResolution getScaledResolution() {
+        return scaledResolution;
     }
 
     @Override

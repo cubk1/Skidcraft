@@ -2,11 +2,18 @@ package wtf.kiddo.skidcraft.util;
 
 import org.lwjgl.opengl.GL11;
 
+import java.awt.*;
+
 /**
  * Author: zcy
  * Created: 2022/5/3
  */
 public final class RenderUtil {
+
+    public static int getColorFromPercentage(float current, float max) {
+        float percentage = (current / max) / 3;
+        return Color.HSBtoRGB(percentage, 1.0F, 1.0F);
+    }
 
     public static void glRenderStart() {
         GL11.glPushMatrix();

@@ -1691,9 +1691,9 @@ public class EntityRenderer
                 this.mc.mcProfiler.endStartSection("FRenderLast");
                 Reflector.callVoid(Reflector.ForgeHooksClient_dispatchRenderLast, new Object[] {var5, Float.valueOf(par1)});
             }
-
+            final ScaledResolution scaledResolution = new ScaledResolution(this.mc.gameSettings, this.mc.displayWidth, this.mc.displayHeight);
             this.mc.mcProfiler.endStartSection("hand");
-            Client.INSTANCE.getEventBus().post(new Render3DEvent(par1));
+            Client.INSTANCE.getEventBus().post(new Render3DEvent(par1, scaledResolution));
             if (this.cameraZoom == 1.0D)
             {
                 GL11.glClear(GL11.GL_DEPTH_BUFFER_BIT);
