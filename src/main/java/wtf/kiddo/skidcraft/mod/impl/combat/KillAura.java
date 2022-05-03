@@ -22,8 +22,8 @@ public final class KillAura extends Mod {
         for (Object en : mc.theWorld.loadedEntityList) {
             if (mc.thePlayer.getDistanceToEntity((Entity) en) < 4f && en != mc.thePlayer && en instanceof EntityLiving) {
                 rotation = RotationUtils.getRotations4Attack(((Entity) en));
-                mc.thePlayer.rotationYaw = rotation[0];
-                mc.thePlayer.rotationPitch = rotation[1];
+//                mc.thePlayer.rotationYaw = rotation[0];
+//                mc.thePlayer.rotationPitch = rotation[1];
                 mc.thePlayer.swingItem();
 //                mc.playerController.attackEntity(mc.thePlayer, (Entity) en);
 //                mc.gameSettings.keyBindUseItem.pressed = false;

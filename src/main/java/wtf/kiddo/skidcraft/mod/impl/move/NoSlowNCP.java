@@ -17,7 +17,7 @@ public final class NoSlowNCP extends Mod {
 
     @EventListener
     public void onMotion(final UpdateEvent event) {
-        if (event.isPre() && mc.thePlayer.isBlocking()) {
+        if (!event.isPre() && mc.thePlayer.isBlocking()) {
             mc.thePlayer.movementInput.moveStrafe = 1F;
             mc.thePlayer.movementInput.moveForward = 1F;
             mc.thePlayer.sendQueue.addToSendQueue(new Packet15Place(-1, -1, -1, 255, mc.thePlayer.inventory.getCurrentItem(), 0F, 0F, 0F));

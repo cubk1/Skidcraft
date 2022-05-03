@@ -244,6 +244,7 @@ public class EntityPlayerSP extends EntityPlayer
                 this.sendPlayerAbilities();
             }
         }
+        Client.INSTANCE.getEventBus().post(new LBUpdateEvent(false));
     }
 
     /**
