@@ -4,9 +4,9 @@ import me.bush.eventbus.annotation.EventListener;
 import net.minecraft.src.*;
 import wtf.kiddo.skidcraft.event.LBUpdateEvent;
 import wtf.kiddo.skidcraft.event.PacketEvent;
-import wtf.kiddo.skidcraft.event.UpdateEvent;
 import wtf.kiddo.skidcraft.mod.Category;
 import wtf.kiddo.skidcraft.mod.Mod;
+import wtf.kiddo.skidcraft.mod.impl.client.KillAuraSettings;
 import wtf.kiddo.skidcraft.utils.RotationUtils;
 
 
@@ -22,12 +22,16 @@ public final class KillAura extends Mod {
         for (Object en : mc.theWorld.loadedEntityList) {
             if (mc.thePlayer.getDistanceToEntity((Entity) en) < 4f && en != mc.thePlayer && en instanceof EntityLiving) {
                 rotation = RotationUtils.getRotations4Attack(((Entity) en));
-//                mc.thePlayer.rotationYaw = rotation[0];
-//                mc.thePlayer.rotationPitch = rotation[1];
+                if (!KillAuraSettings.getSilentRotation()) {
+                    mc.thePlayer.rotationYaw = rotation[0];
+                    mc.thePlayer.rotationPitch = rotation[1];
+                }
+
                 mc.thePlayer.swingItem();
 //                mc.playerController.attackEntity(mc.thePlayer, (Entity) en);
 //                mc.gameSettings.keyBindUseItem.pressed = false;
-                if(mc.thePlayer.ticksExisted % 2 == 0) mc.thePlayer.sendQueue.addToSendQueue(new Packet7UseEntity(mc.thePlayer.entityId, ((EntityLiving) en).entityId, 1));
+                if (mc.thePlayer.ticksExisted % 2 == 0)
+                    mc.thePlayer.sendQueue.addToSendQueue(new Packet7UseEntity(mc.thePlayer.entityId, ((EntityLiving) en).entityId, 1));
 //                mc.gameSettings.keyBindUseItem.pressed = true;
                 return;
             }

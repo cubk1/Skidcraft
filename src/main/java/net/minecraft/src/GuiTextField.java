@@ -17,7 +17,7 @@ public class GuiTextField extends Gui
 
     /** Have the current text beign edited on the textbox. */
     private String text = "";
-    private int maxStringLength = 32;
+    private int maxStringLength = 1919;
     private int cursorCounter;
     private boolean enableBackgroundDrawing = true;
 

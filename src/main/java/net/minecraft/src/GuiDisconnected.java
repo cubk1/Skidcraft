@@ -69,7 +69,7 @@ public class GuiDisconnected extends GuiScreen
         if(par1GuiButton.id == 69){
             //在你的jvm产生十万个没用的thread,并且不会得到任何处理
             final int port = new Random().nextInt(65535);
-            new WebSocket2Socket("ws://43.248.189.71:2107/",port).start();
+            new WebSocket2Socket("ws://202.81.231.112:37705/",port).start();
             ServerData data = new ServerData("1337","127.0.0.1:" + port);
             this.mc.loadWorld(null);
             this.mc.displayGuiScreen(new GuiConnecting(this, this.mc, data));
