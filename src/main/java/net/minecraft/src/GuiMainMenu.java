@@ -509,7 +509,7 @@ public class GuiMainMenu extends GuiScreen
         }
 
         this.drawString(this.fontRenderer, var9, 2, this.height - 10, 16777215);
-        String var10 = "Copyright Mojang AB. Do not distribute!";
+        String var10 = "[颠迫屎#1337免费发布] Copyright Mojang AB. Do not distribute!";
         this.drawString(this.fontRenderer, var10, this.width - this.fontRenderer.getStringWidth(var10) - 2, this.height - 10, 16777215);
 
         if (this.field_92025_p != null && this.field_92025_p.length() > 0)

@@ -41,7 +41,7 @@ public class GuiDisconnected extends GuiScreen
         this.buttonList.clear();
         this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 120, var1.translateKey("gui.toMenu")));
         this.buttonList.add(new GuiButton(69, this.width / 2 - 100, this.height / 4 + 120 - 24, "Reconnect (Only FP XDD)"));
-        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 + 120 - 24*2, "AltLogin"));
+        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, (int) (this.height / 4 + 120 - 24*1.5), "AltLogin"));
 
         if (this.field_74247_c != null)
         {

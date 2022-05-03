@@ -13,7 +13,7 @@ import wtf.kiddo.skidcraft.value.ValueManager;
 public enum Client {
     INSTANCE;
 
-    public static String CLIENT_NAME = "FDPClient for 1.5.2";
+    public static String CLIENT_NAME = "Minecraft 1.5.2          [乾坤辅助 FDP娱乐网] [颠迫屎#1337 免费发布]";
 
     private EventBus eventBus;
     private ValueManager valueManager;
