@@ -6,10 +6,11 @@ package wtf.kiddo.skidcraft.mod;
  */
 public enum Category {
     COMBAT("a"),
-    WORLD("b"),
-    UTILITY("c"),
+    PLAYER("b"),
+    EXPLOITS("c"),
     VISUALS("d"),
-    GLOBAL("e");
+    WORLD("e"),
+    GLOBAL("null");
 
     private final String character;
 

@@ -3,7 +3,11 @@ package wtf.kiddo.skidcraft.mod;
 import me.bush.eventbus.annotation.EventListener;
 import wtf.kiddo.skidcraft.Client;
 import wtf.kiddo.skidcraft.event.KeyInputEvent;
+import wtf.kiddo.skidcraft.mod.impl.combat.Packet;
+import wtf.kiddo.skidcraft.mod.impl.global.Colors;
+import wtf.kiddo.skidcraft.mod.impl.visuals.ClickGUI;
 import wtf.kiddo.skidcraft.mod.impl.visuals.HUD;
+import wtf.kiddo.skidcraft.mod.impl.world.SpeedMine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +26,10 @@ public final class ModManager {
 
     public void initializeMods() {
         registerMod(HUD.class);
+        registerMod(SpeedMine.class);
+        registerMod(Packet.class);
+        registerMod(ClickGUI.class);
+        registerMod(Colors.class);
     }
 
     private void registerMod(Class<? extends Mod> moduleClass) {
