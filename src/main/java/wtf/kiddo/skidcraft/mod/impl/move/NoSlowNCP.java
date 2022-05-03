@@ -10,7 +10,7 @@ public final class NoSlowNCP extends Mod {
 
     public NoSlowNCP() {
 
-        super("NoSlowNCP", Category.MOVE);
+        super("NoSlowNCP", Category.Movement);
         this.setEnabled(true);
 //        this.setKey(47);
     }

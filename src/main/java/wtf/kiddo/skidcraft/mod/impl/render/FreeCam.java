@@ -1,4 +1,4 @@
-package wtf.kiddo.skidcraft.mod.impl.visuals;
+package wtf.kiddo.skidcraft.mod.impl.render;
 
 import me.bush.eventbus.annotation.EventListener;
 import net.minecraft.src.Packet10Flying;
@@ -15,7 +15,7 @@ public final class FreeCam extends Mod {
     private Vec3 pos = new Vec3(0D, 0D, 0D);
 
     public FreeCam() {
-        super("FreeCam", Category.VISUALS);
+        super("FreeCam", Category.Render);
         this.setEnabled(false);
     }
 

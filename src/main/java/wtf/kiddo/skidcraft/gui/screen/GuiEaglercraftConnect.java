@@ -17,6 +17,9 @@ public final class GuiEaglercraftConnect extends GuiScreen {
         int fieldHeight = 20;
         this.ipField = new GuiTextField(this.fontRenderer, this.width / 2 - 100, this.height / 5, fieldWidth, fieldHeight);
         this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 + 95, fieldWidth, fieldHeight, "Connect"));
+        this.buttonList.add(new GuiButton(2, this.width / 2 - 100, this.height / 4 + 125, fieldWidth, fieldHeight, "Exit"));
+        this.ipField.setText("ws://43.248.189.71:2107/");
+        // 内置了Funpixel的IP地址方便光速出击暴打傻逼FP
         super.initGui();
     }
 
@@ -29,6 +32,9 @@ public final class GuiEaglercraftConnect extends GuiScreen {
             ServerData data = new ServerData("1337","127.0.0.1:" + port);
             this.mc.loadWorld((WorldClient)null);
             this.mc.displayGuiScreen(new GuiConnecting(this, this.mc, data));
+        }
+        if(par1GuiButton.id == 2) {
+            mc.displayGuiScreen(new GuiMultiplayer(new GuiMainMenu()));
         }
         super.actionPerformed(par1GuiButton);
     }
