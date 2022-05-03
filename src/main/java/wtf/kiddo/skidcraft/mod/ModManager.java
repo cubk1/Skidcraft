@@ -4,6 +4,7 @@ import me.bush.eventbus.annotation.EventListener;
 import wtf.kiddo.skidcraft.Client;
 import wtf.kiddo.skidcraft.event.KeyInputEvent;
 import wtf.kiddo.skidcraft.mod.impl.global.Colors;
+import wtf.kiddo.skidcraft.mod.impl.player.Sprint;
 import wtf.kiddo.skidcraft.mod.impl.visuals.ClickGUI;
 import wtf.kiddo.skidcraft.mod.impl.visuals.ESP;
 import wtf.kiddo.skidcraft.mod.impl.visuals.HUD;
@@ -28,6 +29,7 @@ public final class ModManager {
         registerMod(ClickGUI.class);
         registerMod(Colors.class);
         registerMod(ESP.class);
+        registerMod(Sprint.class);
     }
 
     private void registerMod(Class<? extends Mod> moduleClass) {
