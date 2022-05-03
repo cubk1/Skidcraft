@@ -1,27 +1,31 @@
 package wtf.kiddo.skidcraft.mod.impl.render;
 
-import net.minecraft.client.Minecraft;
-import org.lwjgl.input.Keyboard;
+import me.bush.eventbus.annotation.EventListener;
+import wtf.kiddo.skidcraft.Client;
+import wtf.kiddo.skidcraft.event.Render2DEvent;
+import wtf.kiddo.skidcraft.event.UpdateEvent;
 import wtf.kiddo.skidcraft.mod.Category;
 import wtf.kiddo.skidcraft.mod.Mod;
-
+import wtf.kiddo.skidcraft.utils.ColorUtils;
 
 public final class FullBright extends Mod {
-    //     Credit   https://github.com/cubk/VapuLite-1
-    private float old;
     public FullBright() {
         super("FullBright", Category.Render);
-        this.setKey(Keyboard.KEY_RSHIFT);
+        this.setEnabled(true);
+    }
+
+    @EventListener
+    public void onRender2DEvent(final UpdateEvent event) {
+        mc.gameSettings.gammaSetting = 10;
     }
 
     @Override
     protected void onEnable() {
-        this.old = mc.gameSettings.gammaSetting;
-        Minecraft.getMinecraft().gameSettings.gammaSetting = 300;
+
     }
 
     @Override
-    protected void onDisable() {
-Minecraft.getMinecraft().gameSettings.gammaSetting = this.old;
+    public void onDisable() {
+        mc.gameSettings.gammaSetting = 1;
     }
 }

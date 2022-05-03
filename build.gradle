@@ -33,6 +33,7 @@ configurations {
 
 dependencies {
     extraLibs fileTree(include: ['*.jar'], dir: 'resources/libs')
+    implementation 'org.apache.commons:commons-jexl3:3.2.1'
     configurations.implementation.extendsFrom(configurations.extraLibs)
 }
 
