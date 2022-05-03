@@ -37,6 +37,9 @@ public final class ModManager {
         registerMod(SpeedNCP.class);
         registerMod(Strafe.class);
         registerMod(ESP.class);
+        registerMod(FreeCam.class);
+        registerMod(InvMove.class);
+        registerMod(NoSlowNCP.class);
         registerMod(Velocity.class);
         registerMod(ClickGui.class);
         registerMod(FullBright.class);

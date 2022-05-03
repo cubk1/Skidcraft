@@ -84,4 +84,8 @@ public class KeyBinding
         this.pressTime = 0;
         this.pressed = false;
     }
+
+    public int getKeyCode() {
+        return this.keyCode;
+    }
 }

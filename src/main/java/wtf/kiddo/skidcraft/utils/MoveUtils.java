@@ -6,8 +6,9 @@ public class MoveUtils {
     private static Minecraft mc = Minecraft.getMinecraft();
 
     public static boolean isMoving() {
-        return (mc.thePlayer.lastTickPosX!=mc.thePlayer.posX||mc.thePlayer.lastTickPosY!=mc.thePlayer.posY||mc.thePlayer.lastTickPosZ!=mc.thePlayer.posZ);
+        return (mc.thePlayer.moveForward != 0 || mc.thePlayer.moveStrafing != 0);
     }
+
     public static void strafe(double speed) {
         if (!isMoving())
             return;
@@ -16,12 +17,15 @@ public class MoveUtils {
         mc.thePlayer.motionX = -Math.sin(yaw) * speed;
         mc.thePlayer.motionZ = Math.cos(yaw) * speed;
     }
+
     public static void strafe() {
         strafe(getSpeed());
     }
+
     public static float getSpeed() {
         return (float) Math.sqrt(mc.thePlayer.motionX * mc.thePlayer.motionX + mc.thePlayer.motionZ * mc.thePlayer.motionZ);
     }
+
     public static double getDirection() {
         float rotationYaw = mc.thePlayer.rotationYaw;
 
@@ -31,8 +35,7 @@ public class MoveUtils {
         float forward = 1F;
         if (mc.thePlayer.moveForward < 0F)
             forward = -0.5F;
-        else
-        if (mc.thePlayer.moveForward > 0F)
+        else if (mc.thePlayer.moveForward > 0F)
             forward = 0.5F;
 
         if (mc.thePlayer.moveStrafing > 0F)
