@@ -4,7 +4,7 @@
 ## 创建工作空间
 ### IDEA
 ```
-gradlew idea
+.\gradlew idea
 ```
 
 ## Credits
