@@ -31,17 +31,22 @@ configurations {
     extraLibs
 }
 
-dependencies {
-    extraLibs fileTree(include: ['*.jar'], dir: 'resources/libs')
-    implementation 'org.apache.commons:commons-jexl3:3.2.1'
-    configurations.implementation.extendsFrom(configurations.extraLibs)
-}
-
 jar {
     from {
         configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
     }
+    manifest {
+        attributes 'Main-Class': 'Start'
+    }
 }
+
+dependencies {
+    extraLibs fileTree(include: ['*.jar'], dir: 'resources/libs')
+    extraLibs fileTree(include: ['*.jar'], dir: 'libs')
+    configurations.implementation.extendsFrom(configurations.extraLibs)
+}
+
+
 
 idea {
     project {
@@ -61,5 +66,7 @@ idea {
         inheritOutputDirs = true
     }
 }
+
+
 
 project.mkdir "${project.projectDir}/run"
