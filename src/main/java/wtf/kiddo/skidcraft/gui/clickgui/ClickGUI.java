@@ -101,10 +101,10 @@ public class ClickGUI extends GuiScreen {
         super.mouseClicked(mouseX, mouseY, mouseButton);
     }
 
-    @Override
+/*    @Override
     protected void mouseReleased(int mouseX, int mouseY, int state) {
         for(final Panel panel : panels)
             panel.setDrag(false);
         super.mouseReleased(mouseX, mouseY, state);
-    }
+    }*/
 }

@@ -28,7 +28,7 @@ class GuiBeaconButton extends GuiButton
         {
             par1Minecraft.renderEngine.bindTexture("/gui/beacon.png");
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-            this.field_82253_i = par2 >= this.xPosition && par3 >= this.yPosition && par2 < this.xPosition + this.width && par3 < this.yPosition + this.height;
+            this.hovered = par2 >= this.xPosition && par3 >= this.yPosition && par2 < this.xPosition + this.width && par3 < this.yPosition + this.height;
             short var4 = 219;
             int var5 = 0;
 
@@ -40,7 +40,7 @@ class GuiBeaconButton extends GuiButton
             {
                 var5 += this.width * 1;
             }
-            else if (this.field_82253_i)
+            else if (this.hovered)
             {
                 var5 += this.width * 3;
             }
