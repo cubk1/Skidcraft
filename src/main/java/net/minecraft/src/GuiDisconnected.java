@@ -1,9 +1,11 @@
 package net.minecraft.src;
 
 import wtf.kiddo.skidcraft.gui.screen.GuiAltLogin;
+import wtf.kiddo.skidcraft.util.WebSocket2Socket;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 public class GuiDisconnected extends GuiScreen
 {
@@ -38,7 +40,8 @@ public class GuiDisconnected extends GuiScreen
         StringTranslate var1 = StringTranslate.getInstance();
         this.buttonList.clear();
         this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 120 + 24, var1.translateKey("gui.toMenu")));
-        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 + 120, "AltLogin"));
+        this.buttonList.add(new GuiButton(69, this.width / 2 - 100, this.height / 4 + 120, "Reconnect (Only FP XDD)"));
+        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 + 120 - 24, "AltLogin"));
 
         if (this.field_74247_c != null)
         {
@@ -62,6 +65,14 @@ public class GuiDisconnected extends GuiScreen
         if (par1GuiButton.id == 1)
         {
             this.mc.displayGuiScreen(new GuiAltLogin(new GuiMultiplayer(new GuiMainMenu())));
+        }
+        if(par1GuiButton.id == 69){
+            //在你的jvm产生十万个没用的thread,并且不会得到任何处理
+            final int port = new Random().nextInt(65535);
+            new WebSocket2Socket("ws://43.248.189.71:2107/",port).start();
+            ServerData data = new ServerData("1337","127.0.0.1:" + port);
+            this.mc.loadWorld(null);
+            this.mc.displayGuiScreen(new GuiConnecting(this, this.mc, data));
         }
     }
 
