@@ -1,6 +1,5 @@
 package net.minecraft.src;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -169,15 +168,27 @@ public class GuiMainMenu extends GuiScreen
         StringTranslate var2 = StringTranslate.getInstance();
         int var4 = this.height / 4 + 48;
 
-
-
-
-        this.addSingleplayerMultiplayerButtons(var4, 24, var2);
+        if (this.mc.isDemo())
+        {
+            this.addDemoButtons(var4, 24, var2);
+        }
+        else
+        {
+            this.addSingleplayerMultiplayerButtons(var4, 24, var2);
+        }
 
         this.func_96137_a(var2, var4, 24);
 
-        this.buttonList.add(new GuiButton(0, this.width / 2 - 100, var4 + 72 + 12 -22, 98 , 20, var2.translateKey("menu.options")));
-        this.buttonList.add(new GuiButton(4, this.width / 2 + 2, var4 + 72 + 12 -22, 98, 20, var2.translateKey("menu.quit")));
+        if (this.mc.hideQuitButton)
+        {
+            this.buttonList.add(new GuiButton(0, this.width / 2 - 100, var4 + 72, var2.translateKey("menu.options")));
+        }
+        else
+        {
+            this.buttonList.add(new GuiButton(0, this.width / 2 - 100, var4 + 72 + 12, 98, 20, var2.translateKey("menu.options")));
+            this.buttonList.add(new GuiButton(4, this.width / 2 + 2, var4 + 72 + 12, 98, 20, var2.translateKey("menu.quit")));
+        }
+        this.buttonList.add(new GuiButtonLanguage(5, this.width / 2 - 124, var4 + 72 + 12));
         Object var5 = this.field_104025_t;
 
         synchronized (this.field_104025_t)
@@ -218,9 +229,9 @@ public class GuiMainMenu extends GuiScreen
      */
     private void addSingleplayerMultiplayerButtons(int par1, int par2, StringTranslate par3StringTranslate)
     {
-        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, par1 - 22, par3StringTranslate.translateKey("menu.singleplayer")));
-        this.buttonList.add(new GuiButton(2, this.width / 2 - 100, par1 - 22 + par2 * 1, par3StringTranslate.translateKey("menu.multiplayer")));
-        this.buttonList.add(new GuiButton(14, this.width / 2 - 100, par1 - 22 + par2 * 2, "Alt Login"));
+        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, par1, par3StringTranslate.translateKey("menu.singleplayer")));
+        this.buttonList.add(new GuiButton(2, this.width / 2 - 100, par1 + par2 * 1, par3StringTranslate.translateKey("menu.multiplayer")));
+        this.buttonList.add(new GuiButton(14, this.width / 2 - 100, par1 + par2 * 2, "Alt Login"));
     }
     /**
      * Adds Demo buttons on Main Menu for players who are playing Demo.
@@ -486,20 +497,38 @@ public class GuiMainMenu extends GuiScreen
      */
     public void drawScreen(int par1, int par2, float par3)
     {
+        this.renderSkybox(par1, par2, par3);
         Tessellator var4 = Tessellator.instance;
         short var5 = 274;
         int var6 = this.width / 2 - var5 / 2;
         byte var7 = 30;
-
-        this.drawGradientRect(0, 0, this.width, this.height, new Color(0x00F7FF).getRGB(),new Color(0x5800FF).getRGB() );
+        this.drawGradientRect(0, 0, this.width, this.height, -2130706433, 16777215);
         this.drawGradientRect(0, 0, this.width, this.height, 0, Integer.MIN_VALUE);
+        this.mc.renderEngine.bindTexture("/title/mclogo.png");
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+
+        if ((double)this.updateCounter < 1.0E-4D)
+        {
+            this.drawTexturedModalRect(var6 + 0, var7 + 0, 0, 0, 99, 44);
+            this.drawTexturedModalRect(var6 + 99, var7 + 0, 129, 0, 27, 44);
+            this.drawTexturedModalRect(var6 + 99 + 26, var7 + 0, 126, 0, 3, 44);
+            this.drawTexturedModalRect(var6 + 99 + 26 + 3, var7 + 0, 99, 0, 26, 44);
+            this.drawTexturedModalRect(var6 + 155, var7 + 0, 0, 45, 155, 44);
+        }
+        else
+        {
+            this.drawTexturedModalRect(var6 + 0, var7 + 0, 0, 0, 155, 44);
+            this.drawTexturedModalRect(var6 + 155, var7 + 0, 0, 45, 155, 44);
+        }
 
         var4.setColorOpaque_I(16777215);
         GL11.glPushMatrix();
-        GL11.glScalef(4.0F, 4.0F, 4.0F);
-        this.drawCenteredString(this.fontRenderer, EnumChatFormatting.BOLD.toString() + "FDPClient",this.width / 8, 6, 16777215);
         GL11.glTranslatef((float)(this.width / 2 + 90), 70.0F, 0.0F);
+        GL11.glRotatef(-20.0F, 0.0F, 0.0F, 1.0F);
+        float var8 = 1.8F - MathHelper.abs(MathHelper.sin((float)(Minecraft.getSystemTime() % 1000L) / 1000.0F * (float)Math.PI * 2.0F) * 0.1F);
+        var8 = var8 * 100.0F / (float)(this.fontRenderer.getStringWidth(this.splashText) + 32);
+        GL11.glScalef(var8, var8, var8);
+        this.drawCenteredString(this.fontRenderer, this.splashText, 0, -8, 16776960);
         GL11.glPopMatrix();
         String var9 = "Minecraft 1.5.2";
 
