@@ -501,7 +501,7 @@ public class GuiMainMenu extends GuiScreen
         this.drawCenteredString(this.fontRenderer, EnumChatFormatting.BOLD.toString() + "FDPClient",this.width / 8, 6, 16777215);
         GL11.glTranslatef((float)(this.width / 2 + 90), 70.0F, 0.0F);
         GL11.glPopMatrix();
-        String var9 = "Minecraft 1.5.2";
+        String var9 = "Minecraft 1.5.2 | FDPClient by liulihaocai | happy new year [2014]";
 
         if (this.mc.isDemo())
         {
@@ -509,7 +509,7 @@ public class GuiMainMenu extends GuiScreen
         }
 
         this.drawString(this.fontRenderer, var9, 2, this.height - 10, 16777215);
-        String var10 = "[颠迫屎#1337免费发布] Copyright Mojang AB. Do not distribute!";
+        String var10 = "[233MC.COM 免费发布] Copyright Mojang AB. Do not distribute!  ";
         this.drawString(this.fontRenderer, var10, this.width - this.fontRenderer.getStringWidth(var10) - 2, this.height - 10, 16777215);
 
         if (this.field_92025_p != null && this.field_92025_p.length() > 0)

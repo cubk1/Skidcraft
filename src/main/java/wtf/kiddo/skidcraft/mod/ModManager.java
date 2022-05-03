@@ -46,6 +46,7 @@ public final class ModManager {
         registerMod(Fly.class);
         registerMod(AutoMath.class);
         registerMod(LiquidWalk.class);
+        registerMod(Eagle.class);
     }
 
     private void registerMod(Class<? extends Mod> moduleClass) {

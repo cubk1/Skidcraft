@@ -64,14 +64,20 @@ public final class SpeedNCP extends Mod {
     public void onUpdateEvent(final LBUpdateEvent event) {
 //     Credit   https://github.com/cubk/VapuLite-1/blob/main/src/main/java/net/optifine/Modules/blatant/Speed.java
         if (!event.isPre()) return;
-        if (!mc.thePlayer.isCollidedHorizontally && mc.thePlayer.moveForward > 0 && mc.thePlayer.onGround) {
-            mc.thePlayer.motionY = 0.42;
-            MoveUtils.strafe(0.26);
-        } else {
+        if (!mc.thePlayer.isCollidedHorizontally) {
+            if (mc.thePlayer.onGround) {
+                float speed = MoveUtils.getSpeed() < 0.56F ? MoveUtils.getSpeed() * 1.045F : /*0.56F*/1f;
+                mc.thePlayer.motionY = 0.42;
+//            MoveUtils.strafe(0.346);
+                MoveUtils.strafe(speed * 1.03);
+            } else {
+                if (mc.thePlayer.motionY < 0.2D)
+                    mc.thePlayer.motionY -= 0.02D;
+                MoveUtils.strafe(MoveUtils.getSpeed() * 1.01889);
 //            setSpeed(0);
-        }
+            }
 //        movementSpeed = 0.26;
-
+        }
 
     }
 

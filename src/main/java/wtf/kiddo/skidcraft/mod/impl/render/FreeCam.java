@@ -16,7 +16,7 @@ public final class FreeCam extends Mod {
 
     public FreeCam() {
         super("FreeCam", Category.Render);
-        this.setEnabled(false);
+//        this.setEnabled(false);
     }
 
     @EventListener
