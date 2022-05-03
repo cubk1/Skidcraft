@@ -40,7 +40,7 @@ public class GuiDisconnected extends GuiScreen
         StringTranslate var1 = StringTranslate.getInstance();
         this.buttonList.clear();
         this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 120, var1.translateKey("gui.toMenu")));
-        this.buttonList.add(new GuiButton(69, this.width / 2 - 100, this.height / 4 + 120 - 24, "Reconnect (Only FP XDD)"));
+        this.buttonList.add(new GuiButton(69, this.width / 2 - 100, this.height / 4 + 120 - 24, "Reconnect to Funpixel"));
         this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 + 120 - 24*2, "AltLogin"));
 
         if (this.field_74247_c != null)
