@@ -7,22 +7,122 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
 import java.text.DecimalFormat;
 import java.util.*;
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-
-import net.minecraft.src.*;
+import net.minecraft.src.AchievementList;
+import net.minecraft.src.AnvilSaveConverter;
+import net.minecraft.src.AxisAlignedBB;
+import net.minecraft.src.Block;
+import net.minecraft.src.CallableClientMemoryStats;
+import net.minecraft.src.CallableClientProfiler;
+import net.minecraft.src.CallableGLInfo;
+import net.minecraft.src.CallableLWJGLVersion;
+import net.minecraft.src.CallableModded;
+import net.minecraft.src.CallableParticleScreenName;
+import net.minecraft.src.CallableTexturePack;
+import net.minecraft.src.CallableTickingScreenName;
+import net.minecraft.src.CallableType2;
+import net.minecraft.src.CallableUpdatingScreenName;
+import net.minecraft.src.ColorizerFoliage;
+import net.minecraft.src.ColorizerGrass;
+import net.minecraft.src.CrashReport;
+import net.minecraft.src.CrashReportCategory;
+import net.minecraft.src.EffectRenderer;
+import net.minecraft.src.EntityBoat;
+import net.minecraft.src.EntityClientPlayerMP;
+import net.minecraft.src.EntityItemFrame;
+import net.minecraft.src.EntityList;
+import net.minecraft.src.EntityLiving;
+import net.minecraft.src.EntityMinecart;
+import net.minecraft.src.EntityPainting;
+import net.minecraft.src.EntityRenderer;
+import net.minecraft.src.EnumMovingObjectType;
+import net.minecraft.src.EnumOS;
+import net.minecraft.src.EnumOSHelper;
+import net.minecraft.src.EnumOptions;
+import net.minecraft.src.FontRenderer;
+import net.minecraft.src.GLAllocation;
+import net.minecraft.src.GameSettings;
+import net.minecraft.src.GameWindowListener;
+import net.minecraft.src.GuiAchievement;
+import net.minecraft.src.GuiChat;
+import net.minecraft.src.GuiConnecting;
+import net.minecraft.src.GuiGameOver;
+import net.minecraft.src.GuiIngame;
+import net.minecraft.src.GuiIngameMenu;
+import net.minecraft.src.GuiInventory;
+import net.minecraft.src.GuiMainMenu;
+import net.minecraft.src.GuiMemoryErrorScreen;
+import net.minecraft.src.GuiScreen;
+import net.minecraft.src.GuiSleepMP;
+import net.minecraft.src.HttpUtil;
+import net.minecraft.src.ILogAgent;
+import net.minecraft.src.INetworkManager;
+import net.minecraft.src.IPlayerUsage;
+import net.minecraft.src.ISaveFormat;
+import net.minecraft.src.ISaveHandler;
+import net.minecraft.src.IntegratedServer;
+import net.minecraft.src.Item;
+import net.minecraft.src.ItemRenderer;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.KeyBinding;
+import net.minecraft.src.LoadingScreenRenderer;
+import net.minecraft.src.LogAgent;
+import net.minecraft.src.MathHelper;
+import net.minecraft.src.MemoryConnection;
+import net.minecraft.src.MinecraftError;
+import net.minecraft.src.MinecraftFakeLauncher;
+import net.minecraft.src.MouseHelper;
+import net.minecraft.src.MovementInputFromOptions;
+import net.minecraft.src.MovingObjectPosition;
+import net.minecraft.src.NetClientHandler;
+import net.minecraft.src.OpenGlHelper;
+import net.minecraft.src.Packet3Chat;
+import net.minecraft.src.PlayerControllerMP;
+import net.minecraft.src.PlayerUsageSnooper;
+import net.minecraft.src.Profiler;
+import net.minecraft.src.ProfilerResult;
+import net.minecraft.src.RenderBlocks;
+import net.minecraft.src.RenderEngine;
+import net.minecraft.src.RenderGlobal;
+import net.minecraft.src.RenderManager;
+import net.minecraft.src.ReportedException;
+import net.minecraft.src.ScaledResolution;
+import net.minecraft.src.ScreenShotHelper;
+import net.minecraft.src.ServerData;
+import net.minecraft.src.Session;
+import net.minecraft.src.SoundManager;
+import net.minecraft.src.StatCollector;
+import net.minecraft.src.StatFileWriter;
+import net.minecraft.src.StatList;
+import net.minecraft.src.StatStringFormatKeyInv;
+import net.minecraft.src.StringTranslate;
+import net.minecraft.src.Tessellator;
+import net.minecraft.src.TextureManager;
+import net.minecraft.src.TexturePackList;
+import net.minecraft.src.ThreadClientSleep;
+import net.minecraft.src.ThreadDownloadResources;
+import net.minecraft.src.ThreadShutdown;
 import net.minecraft.src.Timer;
+import net.minecraft.src.WorldClient;
+import net.minecraft.src.WorldInfo;
+import net.minecraft.src.WorldRenderer;
+import net.minecraft.src.WorldSettings;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.*;
+import org.lwjgl.opengl.ContextCapabilities;
+import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.DisplayMode;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
+import org.lwjgl.opengl.GLContext;
+import org.lwjgl.opengl.PixelFormat;
 import org.lwjgl.util.glu.GLU;
 import wtf.kiddo.skidcraft.Client;
 import wtf.kiddo.skidcraft.event.KeyInputEvent;
@@ -368,72 +468,6 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
         if (this.gameSettings.fullScreen && !this.fullscreen)
         {
             this.toggleFullscreen();
-        }
-    }
-
-    private ByteBuffer readImageToBuffer(InputStream imageStream) throws IOException
-    {
-        BufferedImage bufferedimage = ImageIO.read(imageStream);
-        int[] aint = bufferedimage.getRGB(0, 0, bufferedimage.getWidth(), bufferedimage.getHeight(), (int[])null, 0, bufferedimage.getWidth());
-        ByteBuffer bytebuffer = ByteBuffer.allocate(4 * aint.length);
-
-        for (int i : aint)
-        {
-            bytebuffer.putInt(i << 8 | i >> 24 & 255);
-        }
-
-        bytebuffer.flip();
-        return bytebuffer;
-    }
-
-    public InputStream getInputStream(String location) throws IOException {
-        InputStream inputstream = Minecraft.class.getResourceAsStream(location);
-        if (inputstream != null) {
-            return inputstream;
-        } else {
-            InputStream inputstream1 = this.getInputStreamAssets(location);
-
-            if (inputstream1 != null) {
-                return inputstream1;
-            } else {
-                throw new FileNotFoundException(location);
-            }
-        }
-    }
-
-    public InputStream getInputStreamAssets(String location) throws IOException, FileNotFoundException {
-        File file1 = new File(Minecraft.class.getResource(location).getFile());
-        return file1.isFile() ? new FileInputStream(file1) : null;
-    }
-
-    private void setWindowIcon()
-    {
-        InputStream inputstream = null;
-        InputStream inputstream1 = null;
-
-        try
-        {
-            inputstream = getInputStream("client/icon_32.png");
-            inputstream1 = getInputStream("client/icon_32.png");
-
-            if (inputstream != null && inputstream1 != null)
-            {
-                Display.setIcon(new ByteBuffer[] {this.readImageToBuffer(inputstream), this.readImageToBuffer(inputstream1)});
-            }
-        }
-        catch (IOException ioexception)
-        {
-            //
-        }
-        finally
-        {
-            try {
-                inputstream.close();
-                inputstream1.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
         }
     }
 
