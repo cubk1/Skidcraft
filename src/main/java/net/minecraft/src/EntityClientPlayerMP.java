@@ -166,7 +166,6 @@ public class EntityClientPlayerMP extends EntityPlayerSP {
      */
     public void sendChatMessage(String par1Str) {
         Mod mod = ModManager.getMod(par1Str.toLowerCase().replace(".t ", ""));
-//        this.addChatMessage(par1Str.startsWith(".t ")?"1":"0");
         if (par1Str.toLowerCase().startsWith(".t ")) {
             if (mod != null) {
                 mod.toggle();

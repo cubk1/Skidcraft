@@ -23,6 +23,15 @@ extends GuiScreen {
         this.previousScreen = previousScreen;
     }
 
+    public String[] FaceTexts = {
+            "QwQ",
+            "qwq",
+            "awa",
+            "QAQ",
+            "cwc",
+            "qaq"
+    };
+
     @Override
     protected void actionPerformed(GuiButton button) {
         switch (button.id) {
@@ -36,7 +45,7 @@ extends GuiScreen {
                 break;
             }
             case 2: {
-                username.setText(randomName(4,8) + new Random().nextInt(6666));
+                username.setText(randomName(4,8) + (new Random().nextBoolean() ? new Random().nextInt(6666) : FaceTexts[new Random().nextInt(FaceTexts.length)]));
             }
         }
     }

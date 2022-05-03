@@ -2257,7 +2257,7 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
         var1.put("fullscreen", "" + var4);
         var1.put("sessionid", var7);
         Frame var15 = new Frame();
-        var15.setTitle("Minecraft");
+        var15.setTitle(Client.CLIENT_NAME);
         var15.setBackground(Color.BLACK);
         JPanel var16 = new JPanel();
         var15.setLayout(new BorderLayout());

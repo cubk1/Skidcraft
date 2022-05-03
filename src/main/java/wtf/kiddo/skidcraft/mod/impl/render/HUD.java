@@ -12,6 +12,7 @@ import wtf.kiddo.skidcraft.mod.Mod;
 import wtf.kiddo.skidcraft.mod.ModManager;
 import wtf.kiddo.skidcraft.utils.ColorUtils;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -28,7 +29,7 @@ public final class HUD extends Mod {
     @EventListener
     public void onRender2DEvent(final Render2DEvent event) {
         float posy = 20;
-        mc.fontRenderer.drawStringWithShadow(Client.CLIENT_NAME,4,6,-1);
+        mc.fontRenderer.drawStringWithShadow(Client.CLIENT_NAME,4,6,new Color(255, 141,0).getRGB());
         for (Mod mod : Client.INSTANCE.getModManager().getModMap().values()) {
             if(mod.isEnabled()) {
                 getMc().fontRenderer.drawStringWithShadow(mod.getLabel(),4, (int) posy,ColorUtils.rainbow(1));
