@@ -20,9 +20,9 @@ public class CommandManager {
     public void initializeCommands() {
         commands = new ArrayList<>();
         Client.INSTANCE.getEventBus().subscribe(this);
-
-        commands.add(new Toggle());
         commands.add(new Bind());
+        commands.add(new Toggle());
+
     }
 
     public List<Command> getCommands() {
@@ -56,19 +56,7 @@ public class CommandManager {
 
     @EventListener
     private void onChat(ChatEvent e) {
-        if (e.getMessage().length() > 1 && e.getMessage().startsWith(".")) {
-            e.setCancelled(true);
-            String[] args = e.getMessage().trim().substring(1).split(" ");
-            Optional<Command> possibleCmd = this.getCommandByName(args[0]);
-            if (possibleCmd.isPresent()) {
-                String result = possibleCmd.get().execute(Arrays.copyOfRange(args, 1, args.length));
-                if (result != null && !result.isEmpty()) {
-                    Minecraft.getMinecraft().thePlayer.addChatMessage(result);
-                }
-            } else {
-                Minecraft.getMinecraft().thePlayer.addChatMessage("Bad command syntax!");
-            }
-        }
+
     }
 
 }
