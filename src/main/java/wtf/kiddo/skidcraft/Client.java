@@ -18,7 +18,7 @@ public enum Client {
     private EventBus eventBus;
     private ValueManager valueManager;
     private ModManager modManager;
-    private CommandManager cmdManager;
+    private static CommandManager cmdManager;
 
     public void startClient() {
         Display.setTitle(CLIENT_NAME);
@@ -42,7 +42,7 @@ public enum Client {
         return modManager;
     }
 
-    public CommandManager getCmdManager() {
+    public static CommandManager getCmdManager() {
         return cmdManager;
     }
 }

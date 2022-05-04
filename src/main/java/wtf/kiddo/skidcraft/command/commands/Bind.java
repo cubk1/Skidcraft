@@ -1,42 +1,33 @@
 package wtf.kiddo.skidcraft.command.commands;
 
 import net.minecraft.src.EnumChatFormatting;
+import org.lwjgl.input.Keyboard;
 import wtf.kiddo.skidcraft.command.Command;
 import wtf.kiddo.skidcraft.mod.Mod;
 import wtf.kiddo.skidcraft.mod.ModManager;
 
 public class Bind extends Command {
     public Bind() {
-        super("t", new String[]{"Bind", "togl", "turnon", "enable"});
+        super("b", new String[]{"bind"});
     }
 
     @Override
     public String execute(String[] args) {
-        String modName = "";
-        if (args.length > 1) {
-            modName = args[1];
-        } else if (args.length < 1) {
-
-        }
-        boolean found = false;
-        Mod m = ModManager.getMod(modName);
-        if (m != null) {
-            if (!m.isEnabled()) {
-                m.setEnabled(true);
+        if (args.length >= 2) {
+            Mod m = ModManager.getMod(args[0]);
+            if (m != null) {
+                int k = Keyboard.getKeyIndex((String)args[1].toUpperCase());
+                m.setKey(k);
+                Object[] arrobject = new Object[2];
+                arrobject[0] = m.getLabel();
+                arrobject[1] = k == 0 ? "none" : args[1].toUpperCase();
+                return String.format("> Bound %s to %s", arrobject);
             } else {
-                m.setEnabled(false);
+                return "> Invalid module name, double check spelling.";
             }
-            found = true;
-            if (m.isEnabled()) {
-                return "> " + m.getLabel() + EnumChatFormatting.GRAY + " was" + EnumChatFormatting.GREEN + " enabled";
-            } else {
-                return "> " + m.getLabel() +  EnumChatFormatting.GRAY + " was" + EnumChatFormatting.RED + " disabled";
-            }
+        } else {
+            return "§bCorrect usage:§7 .bind <module> <key>";
         }
-        if (!found) {
-            return  "> Module name " + EnumChatFormatting.RED + args[0] + EnumChatFormatting.GRAY + " is invalid";
-        }
-        return null;
     }
 }
 

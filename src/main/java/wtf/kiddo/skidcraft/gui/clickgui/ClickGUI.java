@@ -53,17 +53,6 @@ public class ClickGUI extends GuiScreen {
             for(int index = panels.size() - 1; index >= 0; index--) {
                 final Panel panel = panels.get(index);
 
-
-                if(panel.isHoverHead(mouseX, mouseY)) {
-                    panel.setDrag(true);
-                    panel.setDragX(panel.getX() - mouseX);
-                    panel.setDragY(panel.getY() - mouseY);
-                    panels.remove(panel);
-                    panels.add(panel);
-                    break;
-                }
-
-
                 for(int buttonIndex = 0; buttonIndex < panel.getButtons().size(); buttonIndex++) {
                     final Button button = panel.getButtons().get(buttonIndex);
 

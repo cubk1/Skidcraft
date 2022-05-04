@@ -2,10 +2,15 @@ package net.minecraft.src;
 
 import net.minecraft.client.Minecraft;
 import wtf.kiddo.skidcraft.Client;
+import wtf.kiddo.skidcraft.command.Command;
+import wtf.kiddo.skidcraft.command.CommandManager;
 import wtf.kiddo.skidcraft.event.MotionEvent;
 import wtf.kiddo.skidcraft.event.UpdateEvent;
 import wtf.kiddo.skidcraft.mod.Mod;
 import wtf.kiddo.skidcraft.mod.ModManager;
+
+import java.util.Arrays;
+import java.util.Optional;
 
 public class EntityClientPlayerMP extends EntityPlayerSP {
     public NetClientHandler sendQueue;
@@ -165,17 +170,19 @@ public class EntityClientPlayerMP extends EntityPlayerSP {
      * Sends a chat message from the player. Args: chatMessage
      */
     public void sendChatMessage(String par1Str) {
-        Mod mod = ModManager.getMod(par1Str.toLowerCase().replace(".t ", ""));
-        if (par1Str.toLowerCase().startsWith(".t ")) {
-            if (mod != null) {
-                mod.toggle();
-                this.addChatMessage(("§8[§c§lFDP§6§lClient§8] §f" + par1Str.toLowerCase().replace(".t ", "") + " toggled"));
-            }else{
-                this.addChatMessage(("§8[§c§lFDP§6§lClient§8] §f" + par1Str.toLowerCase().replace(".t ", "") + " not found"));
+        if (par1Str.length() > 1 && par1Str.startsWith(".")) {
+            String[] args = par1Str.trim().substring(1).split(" ");
+            Optional<Command> possibleCmd = Client.getCmdManager().getCommandByName(args[0]);
+            if (possibleCmd.isPresent()) {
+                String result = possibleCmd.get().execute(Arrays.copyOfRange(args, 1, args.length));
+                if (result != null && !result.isEmpty()) {
+                    Minecraft.getMinecraft().thePlayer.addChatMessage(result);
+                }
+            } else {
+                Minecraft.getMinecraft().thePlayer.addChatMessage("Bad command syntax!");
             }
         } else {
             this.sendQueue.addToSendQueue(new Packet3Chat(par1Str));
-
         }
 
     }

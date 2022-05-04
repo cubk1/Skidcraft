@@ -12,31 +12,16 @@ public class Toggle extends Command {
 
     @Override
     public String execute(String[] args) {
-        String modName = "";
-        if (args.length > 1) {
-            modName = args[1];
-        } else if (args.length < 1) {
-
+        if(args.length <1){
+            return "Use .toggle <Module>";
         }
-        boolean found = false;
-        Mod m = ModManager.getMod(modName);
-        if (m != null) {
-            if (!m.isEnabled()) {
-                m.setEnabled(true);
-            } else {
-                m.setEnabled(false);
-            }
-            found = true;
-            if (m.isEnabled()) {
-                return "> " + m.getLabel() + EnumChatFormatting.GRAY + " was" + EnumChatFormatting.GREEN + " enabled";
-            } else {
-                return "> " + m.getLabel() +  EnumChatFormatting.GRAY + " was" + EnumChatFormatting.RED + " disabled";
-            }
+        Mod m = ModManager.getMod(args[0]);
+        m.toggle();
+        if (m.isEnabled()) {
+            return "> " + m.getLabel() + EnumChatFormatting.GRAY + " was" + EnumChatFormatting.GREEN + " enabled";
+        } else {
+            return "> " + m.getLabel() +  EnumChatFormatting.GRAY + " was" + EnumChatFormatting.RED + " disabled";
         }
-        if (!found) {
-            return  "> Module name " + EnumChatFormatting.RED + args[0] + EnumChatFormatting.GRAY + " is invalid";
-        }
-        return null;
     }
 }
 
