@@ -2,6 +2,7 @@ package wtf.kiddo.skidcraft.gui.clickgui;
 
 import net.minecraft.src.EnumChatFormatting;
 import net.minecraft.src.GuiScreen;
+import wtf.kiddo.skidcraft.gui.ingame.clickgui.GuiInstance;
 import wtf.kiddo.skidcraft.mod.Mod;
 import wtf.kiddo.skidcraft.mod.ModManager;
 
@@ -23,7 +24,7 @@ public class GuiBindScreen extends GuiScreen {
         super.keyTyped(typedChar, keyCode);
 
         if (keyCode == 1) {
-            this.mc.displayGuiScreen(new ClickGUI());
+            this.mc.displayGuiScreen(new GuiInstance());
         }
 
         for(Mod m : ModManager.getModules()) {
@@ -31,7 +32,7 @@ public class GuiBindScreen extends GuiScreen {
                 this.drawCenteredString(this.fontRenderer, EnumChatFormatting.RED+"This key is already bind to"  + m.getLabel(), this.width / 2 - 20, 150, 0xFFFFFF);
             } else if(keyCode != 1) {
                 this.targetMod.setKey(keyCode);
-                this.mc.displayGuiScreen(new ClickGUI());
+                this.mc.displayGuiScreen(new GuiInstance());
             }
         }
     }
