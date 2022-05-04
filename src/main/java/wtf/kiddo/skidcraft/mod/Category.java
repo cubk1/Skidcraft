@@ -9,7 +9,8 @@ public enum Category {
     World("b"),
     Render("d"),
     Movement("f"),
-    Client("1");
+    Client("1"),
+    EXPLOITS("c");
 
 
     private final String character;

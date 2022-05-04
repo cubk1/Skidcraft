@@ -3,8 +3,9 @@ package wtf.kiddo.skidcraft.mod;
 import me.bush.eventbus.annotation.EventListener;
 import wtf.kiddo.skidcraft.Client;
 import wtf.kiddo.skidcraft.event.KeyInputEvent;
-import wtf.kiddo.skidcraft.mod.impl.client.Colors;
+import wtf.kiddo.skidcraft.mod.impl.client.*;
 import wtf.kiddo.skidcraft.mod.impl.combat.*;
+import wtf.kiddo.skidcraft.mod.impl.exploits.Disabler;
 import wtf.kiddo.skidcraft.mod.impl.move.*;
 import wtf.kiddo.skidcraft.mod.impl.render.*;
 import wtf.kiddo.skidcraft.mod.impl.world.*;
@@ -51,6 +52,8 @@ public final class ModManager {
 //        registerMod(Packet.class);
         registerMod(Colors.class);
 //        registerMod(KillAuraSettings.class);
+        registerMod(ESP.class);
+        registerMod(Disabler.class);
     }
 
     private void registerMod(Class<? extends Mod> moduleClass) {
