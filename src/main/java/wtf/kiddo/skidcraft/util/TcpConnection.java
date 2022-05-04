@@ -63,10 +63,7 @@ public class TcpConnection implements INetworkManager {
 	}
 
 	@Override
-	public void wakeThreads() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void wakeThreads() {}
 	
 	private static void writeAll(ByteBuffer buffer, SocketChannel channel) throws IOException {
 		int writes;
@@ -135,7 +132,12 @@ public class TcpConnection implements INetworkManager {
 			if(buffer.hasRemaining()) {
 				byte[] arr = new byte[buffer.limit()];
 				System.arraycopy(buffer.array(), 0, arr, 0, arr.length);
-				DataInputStream input = inputCipher == null ? new DataInputStream(new ByteArrayInputStream(arr)) :  new DataInputStream(new CipherInputStream(new ByteArrayInputStream(arr), inputCipher));;
+				if(inputCipher != null) {
+					byte[] buf = new byte[inputCipher.getOutputSize(arr.length)];
+					inputCipher.processByte(arr, 0, arr.length, buf, 0);
+					arr = buf;
+				}
+				DataInputStream input = new DataInputStream(new ByteArrayInputStream(arr)) ;
 				while(input.available() > 0) {
 					Packet packet = Packet.readPacket(logger, input, netHandler.isServerHandler(), null);
 					incoming.add(packet);
@@ -147,7 +149,6 @@ public class TcpConnection implements INetworkManager {
 				}
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			this.networkShutdown("disconnect.genericReason", new Object[] {"Internal exception: " + e.toString()});
 		}
@@ -175,7 +176,6 @@ public class TcpConnection implements INetworkManager {
 
 	@Override
 	public SocketAddress getSocketAddress() {
-		// TODO Auto-generated method stub
 		return address;
 	}
 
@@ -186,7 +186,6 @@ public class TcpConnection implements INetworkManager {
 
 	@Override
 	public int packetSize() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
