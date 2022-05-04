@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 import wtf.kiddo.skidcraft.Client;
-import wtf.kiddo.skidcraft.mod.impl.visuals.Xray;
+import wtf.kiddo.skidcraft.mod.impl.render.Xray;
 
 import java.util.List;
 import java.util.Random;

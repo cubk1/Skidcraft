@@ -75,7 +75,7 @@ public class TcpConnection implements INetworkManager {
 	private void writeData(byte[] buf) throws IOException {
 		buffer.clear();
 		if(buf.length <= buffer.capacity()) {
-			writeAll(buffer.put(buf).flip(), channel);
+			writeAll((ByteBuffer) buffer.put(buf).flip(), channel);
 		} else {
 			byte[] arr = new byte[buffer.capacity()];
 			int offset = 0;

@@ -33,7 +33,8 @@ public class DDOSER extends Thread {
 	private static final LogAgent logger = new LogAgent("DDOSER", " [DDOSER]", (new File("ddoser.log")).getAbsolutePath());
 	
 	private static final byte[] emptyArray = new byte[32767];
-	private static final Packet emptyPacket = new Packet250CustomPayload(" ".repeat(20), emptyArray);
+	// 我就像个傻逼一样打了20个空格 -cubk
+	private static final Packet emptyPacket = new Packet250CustomPayload("                    ", emptyArray);
 	
 	private static final boolean RECONNECT = true;
 	

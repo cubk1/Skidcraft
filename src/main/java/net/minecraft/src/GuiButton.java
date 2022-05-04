@@ -77,7 +77,8 @@ public class GuiButton extends Gui
     }
 
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
-
+        if(!drawButton)
+            return;
         if (isMouseOver()) {
             if (alpha < 100) {
                 alpha += 255 / 5;

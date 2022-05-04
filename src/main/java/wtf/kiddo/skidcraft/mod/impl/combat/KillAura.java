@@ -13,6 +13,7 @@ import wtf.kiddo.skidcraft.value.impl.NumberValue;
 
 public final class KillAura extends Mod {
     private static final BooleanValue silentRotationValue = new BooleanValue("SilentRotation",true);
+    private static final BooleanValue autoblockValue = new BooleanValue("AutoBlock",true);
     private static final NumberValue<Float> rangeValue = new NumberValue<>("Range", 4.0f, 1.0f, 6.0f, 0.1f);
     float[] rotation = new float[2];
 
@@ -22,6 +23,7 @@ public final class KillAura extends Mod {
 
     @EventListener
     public void onUpdate(final LBUpdateEvent event) {
+
         for (Object en : mc.theWorld.loadedEntityList) {
             if (mc.thePlayer.getDistanceToEntity((Entity) en) < rangeValue.getValue() && en != mc.thePlayer && en instanceof EntityLiving) {
                 rotation = RotationUtils.getRotations4Attack(((Entity) en));
@@ -29,7 +31,10 @@ public final class KillAura extends Mod {
                     mc.thePlayer.rotationYaw = rotation[0];
                     mc.thePlayer.rotationPitch = rotation[1];
                 }
-
+                if(autoblockValue.getValue() && !((EntityLiving) en).isDead && mc.thePlayer.getHeldItem() != null && mc.thePlayer.getHeldItem().getItem() instanceof ItemSword ){
+                    // https://github.com/BapeDeveloperTeam/Bape-Opensource/blob/main/src/main/java/mc/bape/module/blatant/Killaura.java
+                    mc.thePlayer.getCurrentEquippedItem().useItemRightClick(mc.theWorld, mc.thePlayer);
+                }
                 mc.thePlayer.swingItem();
 //                mc.playerController.attackEntity(mc.thePlayer, (Entity) en);
 //                mc.gameSettings.keyBindUseItem.pressed = false;
