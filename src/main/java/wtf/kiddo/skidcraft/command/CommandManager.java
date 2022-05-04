@@ -3,16 +3,13 @@
  */
 package wtf.kiddo.skidcraft.command;
 
-import me.bush.eventbus.annotation.EventListener;
-import net.minecraft.client.Minecraft;
 import wtf.kiddo.skidcraft.Client;
-import wtf.kiddo.skidcraft.command.commands.Bind;
-import wtf.kiddo.skidcraft.command.commands.Esu;
-import wtf.kiddo.skidcraft.command.commands.Toggle;
-import wtf.kiddo.skidcraft.event.ChatEvent;
+import wtf.kiddo.skidcraft.command.commands.CommandBind;
+import wtf.kiddo.skidcraft.command.commands.CommandEsu;
+import wtf.kiddo.skidcraft.command.commands.CommandToggle;
+import wtf.kiddo.skidcraft.command.commands.CommandXray;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 public class CommandManager {
@@ -21,9 +18,10 @@ public class CommandManager {
     public void initializeCommands() {
         commands = new ArrayList<>();
         Client.INSTANCE.getEventBus().subscribe(this);
-        commands.add(new Bind());
-        commands.add(new Toggle());
-        commands.add(new Esu());
+        commands.add(new CommandBind());
+        commands.add(new CommandToggle());
+        commands.add(new CommandEsu());
+        commands.add(new CommandXray());
     }
 
     public List<Command> getCommands() {

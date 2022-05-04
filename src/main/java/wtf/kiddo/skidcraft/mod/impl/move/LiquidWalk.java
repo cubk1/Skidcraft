@@ -7,6 +7,8 @@ import wtf.kiddo.skidcraft.mod.Category;
 import wtf.kiddo.skidcraft.mod.Mod;
 import wtf.kiddo.skidcraft.util.Timer;
 
+// Author of this shit: cubk
+
 public final class LiquidWalk extends Mod {
     public LiquidWalk() {
         super("LiquidWalk", Category.Movement);

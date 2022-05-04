@@ -6,7 +6,7 @@ import wtf.kiddo.skidcraft.mod.Category;
 import wtf.kiddo.skidcraft.mod.Mod;
 
 /**
- * Author: zcy
+ * Author: cubk
  * Created: 2022/5/1
  */
 public final class Velocity extends Mod {

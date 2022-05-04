@@ -55,6 +55,7 @@ public final class ModManager {
         registerMod(ESP.class);
         registerMod(Disabler.class);
         registerMod(Xray.class);
+        registerMod(Timer.class);
     }
 
     private void registerMod(Class<? extends Mod> moduleClass) {

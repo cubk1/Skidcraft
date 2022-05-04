@@ -38,4 +38,42 @@ public class MathUtils {
     		return "";
     	}
     }
+
+	public static boolean parsable(String s, byte type) {
+		try {
+			switch (type) {
+				case 0: {
+					Short.parseShort(s);
+					break;
+				}
+				case 1: {
+					Byte.parseByte(s);
+					break;
+				}
+				case 2: {
+					Integer.parseInt(s);
+					break;
+				}
+				case 3: {
+					Float.parseFloat(s);
+					break;
+				}
+				case 4: {
+					Double.parseDouble(s);
+					break;
+				}
+				case 5: {
+					Long.parseLong(s);
+				}
+				default: {
+					break;
+				}
+			}
+		}
+		catch (NumberFormatException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 }
