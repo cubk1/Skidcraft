@@ -9,6 +9,7 @@ import wtf.kiddo.skidcraft.mod.impl.player.Sprint;
 import wtf.kiddo.skidcraft.mod.impl.visuals.ClickGUI;
 import wtf.kiddo.skidcraft.mod.impl.visuals.ESP;
 import wtf.kiddo.skidcraft.mod.impl.visuals.HUD;
+import wtf.kiddo.skidcraft.mod.impl.visuals.Xray;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +33,7 @@ public final class ModManager {
         registerMod(ESP.class);
         registerMod(Sprint.class);
         registerMod(Disabler.class);
+        registerMod(Xray.class);
     }
 
     private void registerMod(Class<? extends Mod> moduleClass) {

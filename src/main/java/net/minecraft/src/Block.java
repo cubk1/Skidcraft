@@ -1,5 +1,8 @@
 package net.minecraft.src;
 
+import wtf.kiddo.skidcraft.Client;
+import wtf.kiddo.skidcraft.mod.impl.visuals.Xray;
+
 import java.util.List;
 import java.util.Random;
 
@@ -443,6 +446,9 @@ public class Block
      */
     public float getBlockBrightness(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
     {
+        if(Client.INSTANCE.getModManager().getModClass(Xray.class).isEnabled()) {
+            return 1.0F;
+        }
         return par1IBlockAccess.getBrightness(par2, par3, par4, lightValue[par1IBlockAccess.getBlockId(par2, par3, par4)]);
     }
 
@@ -460,6 +466,14 @@ public class Block
      */
     public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
     {
+        final Xray x = (Xray) Client.INSTANCE.getModManager().getModClass(Xray.class);
+        if(x.isEnabled()) {
+            if (x.KEY_IDS.contains(this.blockID)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
         return par5 == 0 && this.minY > 0.0D ? true : (par5 == 1 && this.maxY < 1.0D ? true : (par5 == 2 && this.minZ > 0.0D ? true : (par5 == 3 && this.maxZ < 1.0D ? true : (par5 == 4 && this.minX > 0.0D ? true : (par5 == 5 && this.maxX < 1.0D ? true : !par1IBlockAccess.isBlockOpaqueCube(par2, par3, par4))))));
     }
 
@@ -1165,6 +1179,9 @@ public class Block
      */
     public float getAmbientOcclusionLightValue(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
     {
+        if(Client.INSTANCE.getModManager().getModClass(Xray.class).isEnabled()) {
+            return 1.0F;
+        }
         return par1IBlockAccess.isBlockNormalCube(par2, par3, par4) ? 0.2F : 1.0F;
     }
 
