@@ -1,6 +1,8 @@
 import java.io.File;
 import java.lang.reflect.Field;
 
+import javax.imageio.ImageIO;
+
 import net.minecraft.client.Minecraft;
 
 public class Start
@@ -20,5 +22,8 @@ public class Start
         }
 
         Minecraft.main(args);
+    }
+    static {
+    	ImageIO.setUseCache(false);
     }
 }
