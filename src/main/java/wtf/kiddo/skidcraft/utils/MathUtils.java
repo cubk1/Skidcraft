@@ -27,8 +27,8 @@ public class MathUtils {
                 .replace("加","+")
                 .replace("减","-")
                 .replace("以","").replaceAll("<.*>", "");;
-    	if(math.contains("之和")) {
-    		math = "("+math.replace("之和", ")");
+    	while(math.contains("之")) {
+    		math = math.replaceAll("(.*)之.", "($1)");
     	}
     	try {
     		return solve(math);
