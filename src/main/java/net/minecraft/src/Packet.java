@@ -131,7 +131,7 @@ public abstract class Packet
     {
         boolean var4 = false;
         Packet var5 = null;
-        int var6 = par3Socket.getSoTimeout();
+        int var6 = par3Socket == null ? 0 : par3Socket.getSoTimeout();
         int var9;
 
         try
@@ -157,7 +157,7 @@ public abstract class Packet
 
             var5.field_98193_m = par0ILogAgent;
 
-            if (var5 instanceof Packet254ServerPing)
+            if (var5 instanceof Packet254ServerPing && par3Socket != null)
             {
                 par3Socket.setSoTimeout(1500);
             }
@@ -175,7 +175,7 @@ public abstract class Packet
         PacketCount.countPacket(var9, (long)var5.getPacketSize());
         ++receivedID;
         receivedSize += (long)var5.getPacketSize();
-        par3Socket.setSoTimeout(var6);
+        if(par3Socket != null)par3Socket.setSoTimeout(var6);
         return var5;
     }
 

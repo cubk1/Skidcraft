@@ -208,7 +208,7 @@ public class CryptManager
     /**
      * Create a new BufferedBlockCipher instance
      */
-    private static BufferedBlockCipher createBufferedBlockCipher(boolean par0, Key par1Key)
+    public static BufferedBlockCipher createBufferedBlockCipher(boolean par0, Key par1Key)
     {
         BufferedBlockCipher var2 = new BufferedBlockCipher(new CFBBlockCipher(new AESFastEngine(), 8));
         var2.init(par0, new ParametersWithIV(new KeyParameter(par1Key.getEncoded()), par1Key.getEncoded(), 0, 16));
