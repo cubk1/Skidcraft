@@ -35,14 +35,10 @@ jar {
     from {
         configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
     }
-    manifest {
-        attributes 'Main-Class': 'Start'
-    }
 }
 
 dependencies {
     extraLibs fileTree(include: ['*.jar'], dir: 'resources/libs')
-    extraLibs fileTree(include: ['*.jar'], dir: 'libs')
     configurations.implementation.extendsFrom(configurations.extraLibs)
 }
 

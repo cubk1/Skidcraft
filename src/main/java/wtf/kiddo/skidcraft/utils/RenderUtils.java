@@ -8,8 +8,7 @@ import org.lwjgl.opengl.GL11;
 
 public class RenderUtils {
     private static Minecraft mc = Minecraft.getMinecraft();
-    public static void drawTracerLine(double x, double y, double z, float red, float green, float blue, float alpha,
-                                      float lineWdith) {
+    public static void drawTracerLine(double x, double y, double z, float red, float green, float blue, float alpha, float lineWdith) {
         GL11.glPushMatrix();
         GL11.glLoadIdentity();
         mc.entityRenderer.orientCamera(mc.timer.renderPartialTicks);
