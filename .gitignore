@@ -14,6 +14,8 @@ classes
 *.iws
 *.iml
 .idea
+out
+libs
 
 # gradle
 build
