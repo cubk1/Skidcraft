@@ -87,7 +87,7 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
     /**
      * This is the item that is in use when the player is holding down the useItemButton (e.g., bow, food, sword)
      */
-    private ItemStack itemInUse;
+    public ItemStack itemInUse;
 
     /**
      * This field starts off equal to getMaxItemUseDuration and is decremented on each tick

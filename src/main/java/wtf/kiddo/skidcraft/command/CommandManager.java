@@ -7,6 +7,7 @@ import me.bush.eventbus.annotation.EventListener;
 import net.minecraft.client.Minecraft;
 import wtf.kiddo.skidcraft.Client;
 import wtf.kiddo.skidcraft.command.commands.Bind;
+import wtf.kiddo.skidcraft.command.commands.Esu;
 import wtf.kiddo.skidcraft.command.commands.Toggle;
 import wtf.kiddo.skidcraft.event.ChatEvent;
 
@@ -22,7 +23,7 @@ public class CommandManager {
         Client.INSTANCE.getEventBus().subscribe(this);
         commands.add(new Bind());
         commands.add(new Toggle());
-
+        commands.add(new Esu());
     }
 
     public List<Command> getCommands() {
@@ -49,15 +50,8 @@ public class CommandManager {
             return true;
         }).findFirst();
     }
-
     public void add(Command command) {
         this.commands.add(command);
     }
-
-    @EventListener
-    private void onChat(ChatEvent e) {
-
-    }
-
 }
 
