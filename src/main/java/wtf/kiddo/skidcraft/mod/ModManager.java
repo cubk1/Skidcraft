@@ -6,6 +6,7 @@ import wtf.kiddo.skidcraft.event.KeyInputEvent;
 import wtf.kiddo.skidcraft.mod.impl.client.*;
 import wtf.kiddo.skidcraft.mod.impl.combat.*;
 import wtf.kiddo.skidcraft.mod.impl.exploits.Disabler;
+import wtf.kiddo.skidcraft.mod.impl.exploits.ServerCrasher;
 import wtf.kiddo.skidcraft.mod.impl.move.*;
 import wtf.kiddo.skidcraft.mod.impl.render.*;
 import wtf.kiddo.skidcraft.mod.impl.world.*;
