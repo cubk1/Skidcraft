@@ -166,6 +166,7 @@ public class GameSettings
     public KeyBinding keyBindPickBlock = new KeyBinding("key.pickItem", -98);
     public KeyBinding keyBindCommand = new KeyBinding("key.command", 53);
     public KeyBinding[] keyBindings;
+    public int renderDistanceChunks = -1;
     protected Minecraft mc;
     private File optionsFile;
     public int difficulty;

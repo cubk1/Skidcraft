@@ -76,4 +76,8 @@ public class MathUtils {
 		}
 		return true;
 	}
+
+	public static double square(double in) {
+		return in * in;
+	}
 }

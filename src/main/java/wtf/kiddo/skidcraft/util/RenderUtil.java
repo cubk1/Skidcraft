@@ -1,5 +1,6 @@
 package wtf.kiddo.skidcraft.util;
 
+import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
@@ -133,5 +134,23 @@ public final class RenderUtil {
         GL11.glDisable(GL11.GL_LINE_SMOOTH);
         GL11.glShadeModel(GL11.GL_FLAT);
         glRenderStop();
+    }
+
+    public static void startDrawing() {
+        GL11.glEnable(3042);
+        GL11.glEnable(3042);
+        GL11.glBlendFunc(770, 771);
+        GL11.glEnable(2848);
+        GL11.glDisable(3553);
+        GL11.glDisable(2929);
+        Minecraft.getMinecraft().entityRenderer.setupCameraTransform(Minecraft.getMinecraft().timer.renderPartialTicks, 0);
+    }
+
+    public static void stopDrawing() {
+        GL11.glDisable(3042);
+        GL11.glEnable(3553);
+        GL11.glDisable(2848);
+        GL11.glDisable(3042);
+        GL11.glEnable(2929);
     }
 }
