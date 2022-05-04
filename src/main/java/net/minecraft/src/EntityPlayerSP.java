@@ -2,8 +2,10 @@ package net.minecraft.src;
 
 import net.minecraft.client.Minecraft;
 import wtf.kiddo.skidcraft.Client;
+import wtf.kiddo.skidcraft.event.LBSlowDownEvent;
 import wtf.kiddo.skidcraft.event.LBUpdateEvent;
 import wtf.kiddo.skidcraft.event.MotionEvent;
+import wtf.kiddo.skidcraft.event.PacketEvent;
 
 public class EntityPlayerSP extends EntityPlayer
 {
@@ -170,8 +172,10 @@ public class EntityPlayerSP extends EntityPlayer
 
             if (this.isUsingItem())
             {
-                this.movementInput.moveStrafe *= 0.2F;
-                this.movementInput.moveForward *= 0.2F;
+                final LBSlowDownEvent event = new LBSlowDownEvent(0.2f);
+                Client.INSTANCE.getEventBus().post(event);
+                this.movementInput.moveStrafe *= event.slowdown;
+                this.movementInput.moveForward *= event.slowdown;
                 this.sprintToggleTimer = 0;
             }
 
