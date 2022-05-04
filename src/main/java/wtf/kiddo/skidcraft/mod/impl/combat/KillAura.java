@@ -6,11 +6,14 @@ import wtf.kiddo.skidcraft.event.LBUpdateEvent;
 import wtf.kiddo.skidcraft.event.PacketEvent;
 import wtf.kiddo.skidcraft.mod.Category;
 import wtf.kiddo.skidcraft.mod.Mod;
-import wtf.kiddo.skidcraft.mod.impl.client.KillAuraSettings;
 import wtf.kiddo.skidcraft.utils.RotationUtils;
+import wtf.kiddo.skidcraft.value.impl.BooleanValue;
+import wtf.kiddo.skidcraft.value.impl.NumberValue;
 
 
 public final class KillAura extends Mod {
+    private static final BooleanValue silentRotationValue = new BooleanValue("SilentRotation",true);
+    private static final NumberValue<Float> rangeValue = new NumberValue<>("Range", 4.0f, 1.0f, 6.0f, 0.1f);
     float[] rotation = new float[2];
 
     public KillAura() {
@@ -20,9 +23,9 @@ public final class KillAura extends Mod {
     @EventListener
     public void onUpdate(final LBUpdateEvent event) {
         for (Object en : mc.theWorld.loadedEntityList) {
-            if (mc.thePlayer.getDistanceToEntity((Entity) en) < 4f && en != mc.thePlayer && en instanceof EntityLiving) {
+            if (mc.thePlayer.getDistanceToEntity((Entity) en) < rangeValue.getValue() && en != mc.thePlayer && en instanceof EntityLiving) {
                 rotation = RotationUtils.getRotations4Attack(((Entity) en));
-                if (!KillAuraSettings.getSilentRotation()) {
+                if (!silentRotationValue.getValue()) {
                     mc.thePlayer.rotationYaw = rotation[0];
                     mc.thePlayer.rotationPitch = rotation[1];
                 }

@@ -2,9 +2,11 @@ package wtf.kiddo.skidcraft.gui.ingame.clickgui;
 
 import net.minecraft.src.GuiScreen;
 import wtf.kiddo.skidcraft.Client;
+import wtf.kiddo.skidcraft.gui.ingame.clickgui.properties.BooleanButton;
 import wtf.kiddo.skidcraft.mod.Category;
 import wtf.kiddo.skidcraft.mod.Mod;
 import wtf.kiddo.skidcraft.util.RenderUtil;
+import wtf.kiddo.skidcraft.value.impl.BooleanValue;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -34,6 +36,7 @@ public final class GuiInstance extends GuiScreen {
                     public void setupItems() {
                         Client.INSTANCE.getModManager().getModsInCategory(moduleType).forEach(mod -> {
                             this.addItem(new ModuleButton(mod));
+
                         });
                     }
                 });

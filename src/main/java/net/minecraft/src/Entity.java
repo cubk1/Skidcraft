@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 import net.minecraft.server.MinecraftServer;
+import org.lwjgl.input.Keyboard;
+import wtf.kiddo.skidcraft.Client;
+import wtf.kiddo.skidcraft.event.KeyInputEvent;
+import wtf.kiddo.skidcraft.event.LBMoveEvent;
 
 public abstract class Entity
 {
@@ -590,6 +594,8 @@ public abstract class Entity
      */
     public void moveEntity(double par1, double par3, double par5)
     {
+        LBMoveEvent event = new LBMoveEvent(false);
+        Client.INSTANCE.getEventBus().post(event);
         if (this.noClip)
         {
             this.boundingBox.offset(par1, par3, par5);
@@ -620,7 +626,7 @@ public abstract class Entity
             double var15 = par3;
             double var17 = par5;
             AxisAlignedBB var19 = this.boundingBox.copy();
-            boolean var20 = this.onGround && this.isSneaking() && this instanceof EntityPlayer;
+            boolean var20 = this.onGround && (this.isSneaking() || event.safeWalking()) && this instanceof EntityPlayer;
 
             if (var20)
             {

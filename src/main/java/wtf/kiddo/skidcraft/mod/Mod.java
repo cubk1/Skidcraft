@@ -11,6 +11,7 @@ import java.util.List;
  * Created: 2022/5/1
  */
 public abstract class Mod {
+    public boolean openGuiBind = false;
     private String label, suffix;
     private boolean enabled;
     private int key;

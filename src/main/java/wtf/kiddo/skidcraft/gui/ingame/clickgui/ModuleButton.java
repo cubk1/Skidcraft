@@ -1,5 +1,7 @@
 package wtf.kiddo.skidcraft.gui.ingame.clickgui;
 
+import net.minecraft.client.Minecraft;
+import wtf.kiddo.skidcraft.gui.clickgui.GuiBindScreen;
 import wtf.kiddo.skidcraft.gui.ingame.clickgui.properties.BooleanButton;
 import wtf.kiddo.skidcraft.gui.ingame.clickgui.properties.EnumButton;
 import wtf.kiddo.skidcraft.gui.ingame.clickgui.properties.NumberSlider;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
  */
 public final class ModuleButton extends Button {
     private final Mod module;
+    BooleanValue bind;
     private java.util.List<Item> items = new ArrayList<Item>();
     private boolean subOpen;
 
@@ -29,14 +32,18 @@ public final class ModuleButton extends Button {
                     this.items.add(new BooleanButton((BooleanValue) property));
                 }
                 if (property instanceof EnumValue) {
-                    this.items.add(new EnumButton((EnumValue)property));
+                    this.items.add(new EnumButton((EnumValue) property));
                 }
                 if (property instanceof NumberValue) {
-                    this.items.add(new NumberSlider((NumberValue)property));
+                    this.items.add(new NumberSlider((NumberValue) property));
                 }
+
                 if (!(property.getValue() instanceof NumberValue)) continue;
             }
         }
+
+        bind = new BooleanValue(" Bind", false);
+        this.items.add(new BooleanButton(bind));
     }
 
     @Override
@@ -46,6 +53,10 @@ public final class ModuleButton extends Button {
             //FontUtil.drawString("...", this.x - 1.0f + (float)this.width - 8.0f, this.y - 2.0f, -1);// remove this, its not in future
 
             if (this.subOpen) {
+                if (bind != null && bind.getValue()){
+                    bind.setValue(false);
+                    Minecraft.getMinecraft().displayGuiScreen(new GuiBindScreen(module));
+                }
                 float height = 1.0f;
                 for (Item item : items) {
                     item.setLocation(this.x + 1.0f, this.y + (height += 15.0f));

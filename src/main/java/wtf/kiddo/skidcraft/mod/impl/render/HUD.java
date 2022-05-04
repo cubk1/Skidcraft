@@ -7,6 +7,8 @@ import net.minecraft.src.ScaledResolution;
 import org.lwjgl.input.Keyboard;
 import wtf.kiddo.skidcraft.Client;
 import wtf.kiddo.skidcraft.event.Render2DEvent;
+import wtf.kiddo.skidcraft.gui.clickgui.GuiBindScreen;
+import wtf.kiddo.skidcraft.gui.ingame.clickgui.GuiInstance;
 import wtf.kiddo.skidcraft.mod.Category;
 import wtf.kiddo.skidcraft.mod.Mod;
 import wtf.kiddo.skidcraft.mod.ModManager;
@@ -34,6 +36,7 @@ public final class HUD extends Mod {
             if(mod.isEnabled()) {
                 getMc().fontRenderer.drawStringWithShadow(mod.getLabel(),4, (int) posy,ColorUtils.rainbow(1));
                 posy += (getMc().fontRenderer.FONT_HEIGHT + 2);
+
             }
         }
     }

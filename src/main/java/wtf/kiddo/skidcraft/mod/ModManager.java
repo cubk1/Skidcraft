@@ -4,7 +4,6 @@ import me.bush.eventbus.annotation.EventListener;
 import wtf.kiddo.skidcraft.Client;
 import wtf.kiddo.skidcraft.event.KeyInputEvent;
 import wtf.kiddo.skidcraft.mod.impl.client.Colors;
-import wtf.kiddo.skidcraft.mod.impl.client.KillAuraSettings;
 import wtf.kiddo.skidcraft.mod.impl.combat.*;
 import wtf.kiddo.skidcraft.mod.impl.move.*;
 import wtf.kiddo.skidcraft.mod.impl.render.*;
@@ -47,11 +46,11 @@ public final class ModManager {
         registerMod(Fly.class);
         registerMod(AutoMath.class);
         registerMod(LiquidWalk.class);
-        registerMod(Eagle.class);
+        registerMod(SafeWalk.class);
 //        registerMod(SpeedMine.class);
 //        registerMod(Packet.class);
         registerMod(Colors.class);
-        registerMod(KillAuraSettings.class);
+//        registerMod(KillAuraSettings.class);
     }
 
     private void registerMod(Class<? extends Mod> moduleClass) {

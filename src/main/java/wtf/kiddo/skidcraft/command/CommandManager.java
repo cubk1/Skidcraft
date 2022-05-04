@@ -6,6 +6,7 @@ package wtf.kiddo.skidcraft.command;
 import me.bush.eventbus.annotation.EventListener;
 import net.minecraft.client.Minecraft;
 import wtf.kiddo.skidcraft.Client;
+import wtf.kiddo.skidcraft.command.commands.Bind;
 import wtf.kiddo.skidcraft.command.commands.Toggle;
 import wtf.kiddo.skidcraft.event.ChatEvent;
 
@@ -21,6 +22,7 @@ public class CommandManager {
         Client.INSTANCE.getEventBus().subscribe(this);
 
         commands.add(new Toggle());
+        commands.add(new Bind());
     }
 
     public List<Command> getCommands() {
