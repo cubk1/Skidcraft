@@ -1,6 +1,7 @@
 package wtf.kiddo.skidcraft.util;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.src.ScaledResolution;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
@@ -152,5 +153,9 @@ public final class RenderUtil {
         GL11.glDisable(2848);
         GL11.glDisable(3042);
         GL11.glEnable(2929);
+    }
+
+    public static int width() {
+        return new ScaledResolution(Minecraft.getMinecraft().gameSettings, Minecraft.getMinecraft().displayWidth, Minecraft.getMinecraft().displayHeight).getScaledWidth();
     }
 }
