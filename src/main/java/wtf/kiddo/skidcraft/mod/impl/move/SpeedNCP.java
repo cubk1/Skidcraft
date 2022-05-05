@@ -3,6 +3,7 @@ package wtf.kiddo.skidcraft.mod.impl.move;
 import me.bush.eventbus.annotation.EventListener;
 import net.minecraft.src.Potion;
 import wtf.kiddo.skidcraft.event.LBUpdateEvent;
+import wtf.kiddo.skidcraft.event.UpdateEvent;
 import wtf.kiddo.skidcraft.mod.Category;
 import wtf.kiddo.skidcraft.mod.Mod;
 import wtf.kiddo.skidcraft.utils.MoveUtils;
@@ -61,16 +62,16 @@ public final class SpeedNCP extends Mod {
     }
 
     @EventListener
-    public void onUpdateEvent(final LBUpdateEvent event) {
+    public void onUpdateEvent(final UpdateEvent event) {
 //     Credit   LiquidBounce by CCBlueX
         if (!event.isPre()) return;
         if (MoveUtils.isMoving()) {
             if (mc.thePlayer.onGround) {
-                MoveUtils.strafe(0.56f);
+                MoveUtils.strafe(0.30);
                 mc.thePlayer.motionY = 0.41999998688697815;
             } else {
-                MoveUtils.strafe(MoveUtils.getSpeed() * mc.thePlayer.fallDistance > 0.4f ?
-                        1.0f : 1.01f);
+/*                MoveUtils.strafe(MoveUtils.getSpeed() * mc.thePlayer.fallDistance > 0.4f ?
+                        1.0f : 1.01f);*/
             }
         } else {
             mc.thePlayer.motionX = 0.0;
