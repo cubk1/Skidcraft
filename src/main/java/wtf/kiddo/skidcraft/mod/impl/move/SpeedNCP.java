@@ -14,7 +14,7 @@ public final class SpeedNCP extends Mod {
 
     public SpeedNCP() {
 
-        super("SpeedNCP", Category.Movement);
+        super("Speed", Category.Movement);
 //        this.setEnabled(false);
         this.setKey(47);
     }

@@ -12,6 +12,11 @@ import wtf.kiddo.skidcraft.value.impl.NumberValue;
 
 
 public final class KillAura extends Mod {
+    private final static BooleanValue players = new BooleanValue("Players",true);
+    private final static BooleanValue mobs = new BooleanValue("Mobs",true);
+    private final static BooleanValue animals = new BooleanValue("Animals",true);
+    private final static BooleanValue invisibles = new BooleanValue("Invisibles",true);
+
     private static final BooleanValue silentRotationValue = new BooleanValue("SilentRotation",true);
     private static final BooleanValue autoblockValue = new BooleanValue("AutoBlock",true);
     private static final NumberValue<Float> rangeValue = new NumberValue<>("Range", 4.0f, 1.0f, 6.0f, 0.1f);
@@ -31,6 +36,14 @@ public final class KillAura extends Mod {
                     mc.thePlayer.rotationYaw = rotation[0];
                     mc.thePlayer.rotationPitch = rotation[1];
                 }
+                if(en instanceof EntityPlayer && !players.getValue())
+                    return;
+                if(en instanceof EntityMob && !mobs.getValue())
+                    return;
+                if(en instanceof EntityAnimal && !animals.getValue())
+                    return;
+                if(((EntityLiving) en).isInvisible() && !invisibles.getValue())
+                    return;
                 if(autoblockValue.getValue() && !((EntityLiving) en).isDead && mc.thePlayer.getHeldItem() != null && mc.thePlayer.getHeldItem().getItem() instanceof ItemSword ){
                     // https://github.com/BapeDeveloperTeam/Bape-Opensource/blob/main/src/main/java/mc/bape/module/blatant/Killaura.java
                     mc.thePlayer.getCurrentEquippedItem().useItemRightClick(mc.theWorld, mc.thePlayer);

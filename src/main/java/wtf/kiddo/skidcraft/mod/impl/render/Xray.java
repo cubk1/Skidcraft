@@ -13,24 +13,23 @@ import java.util.List;
  * Created: 2022/5/4
  */
 public final class Xray extends Mod {
-    public List<Integer> KEY_IDS = new ArrayList<>();
+    public static List<Integer> KEY_IDS = new ArrayList<>();
     public Xray() {
         super("Xray", Category.Render);
-    }
-
-    @Override
-    protected void onEnable() {
         KEY_IDS.add(Block.oreGold.blockID);
         KEY_IDS.add(Block.oreDiamond.blockID);
         KEY_IDS.add(Block.oreIron.blockID);
         KEY_IDS.add(Block.oreCoal.blockID);
         KEY_IDS.add(Block.oreEmerald.blockID);
+    }
+
+    @Override
+    protected void onEnable() {
         getMc().renderGlobal.loadRenderers();
     }
 
     @Override
     protected void onDisable() {
-        KEY_IDS.clear();
         getMc().renderGlobal.loadRenderers();
     }
 }

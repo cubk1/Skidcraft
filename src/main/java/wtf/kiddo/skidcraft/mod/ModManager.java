@@ -48,13 +48,11 @@ public final class ModManager {
         registerMod(AutoMath.class);
         registerMod(LiquidWalk.class);
         registerMod(SafeWalk.class);
-//        registerMod(SpeedMine.class);
-//        registerMod(Packet.class);
         registerMod(Colors.class);
-//        registerMod(KillAuraSettings.class);
         registerMod(ESP.class);
         registerMod(Disabler.class);
         registerMod(Xray.class);
+        registerMod(Timer.class);
     }
 
     private void registerMod(Class<? extends Mod> moduleClass) {

@@ -5,8 +5,8 @@ import wtf.kiddo.skidcraft.command.Command;
 import wtf.kiddo.skidcraft.mod.Mod;
 import wtf.kiddo.skidcraft.mod.ModManager;
 
-public class Toggle extends Command {
-    public Toggle() {
+public class CommandToggle extends Command {
+    public CommandToggle() {
         super("t", new String[]{"toggle", "togl", "turnon", "enable"});
     }
 

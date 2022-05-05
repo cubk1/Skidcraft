@@ -14,8 +14,8 @@ import java.net.URLConnection;
 import java.util.List;
 import java.util.Map;
 
-public class Esu extends Command {
-    public Esu() {
+public class CommandEsu extends Command {
+    public CommandEsu() {
         super("esu", new String[]{});
     }
 

@@ -6,8 +6,8 @@ import wtf.kiddo.skidcraft.command.Command;
 import wtf.kiddo.skidcraft.mod.Mod;
 import wtf.kiddo.skidcraft.mod.ModManager;
 
-public class Bind extends Command {
-    public Bind() {
+public class CommandBind extends Command {
+    public CommandBind() {
         super("b", new String[]{"bind"});
     }
 

@@ -40,7 +40,7 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
      * Set to 'this' in Minecraft constructor; used by some settings get methods
      */
     private static Minecraft theMinecraft;
-    public PlayerControllerMP playerController;
+    public static PlayerControllerMP playerController;
     private boolean fullscreen = false;
     private boolean hasCrashed = false;
 
