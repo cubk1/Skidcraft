@@ -501,7 +501,7 @@ public class GuiMainMenu extends GuiScreen
         this.drawCenteredString(this.fontRenderer, EnumChatFormatting.BOLD.toString() + "FDPClient",this.width / 8, 6, 16777215);
         GL11.glTranslatef((float)(this.width / 2 + 90), 70.0F, 0.0F);
         GL11.glPopMatrix();
-        String var9 = "Minecraft 1.5.2 | happy new year [2014]";
+        String var9 = "Minecraft 1.5.2 | FDPClient by liulihaocai | happy new year [2014]";
 
         if (this.mc.isDemo())
         {

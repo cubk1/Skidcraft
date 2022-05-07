@@ -1,6 +1,8 @@
 package wtf.kiddo.skidcraft.mod.impl.combat;
 
 import me.bush.eventbus.annotation.EventListener;
+import net.minecraft.src.Packet28EntityVelocity;
+import wtf.kiddo.skidcraft.event.PacketEvent;
 import wtf.kiddo.skidcraft.event.UpdateEvent;
 import wtf.kiddo.skidcraft.mod.Category;
 import wtf.kiddo.skidcraft.mod.Mod;
@@ -15,14 +17,9 @@ public final class Velocity extends Mod {
     }
 
     @EventListener
-    public void onTick(UpdateEvent event) {
-        if (mc.thePlayer.hurtResistantTime > 0 && mc.thePlayer.hurtTime > 0) {
-            mc.thePlayer.hurtResistantTime = 0;
-            mc.thePlayer.hurtTime = 0;
-            mc.thePlayer.motionX = 0.0;
-            mc.thePlayer.motionY /= 10.0;
-            mc.thePlayer.motionZ = 0.0;
-        }
+    public void onTick(PacketEvent event) {
+        if(event.getPacket() instanceof Packet28EntityVelocity && ((Packet28EntityVelocity) event.getPacket()).entityId == mc.thePlayer.entityId)
+            event.setCancelled(true);
     }
 
     @Override
