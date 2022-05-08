@@ -17,10 +17,12 @@ public final class Velocity extends Mod {
 
     @EventListener
     public void onTick(PacketEvent event) {
-        if (event.getPacket() instanceof Packet28EntityVelocity && ((Packet28EntityVelocity) event.getPacket()).entityId == mc.thePlayer.entityId)
+        if (event.getPacket() instanceof Packet28EntityVelocity && ((Packet28EntityVelocity) event.getPacket()).entityId == mc.thePlayer.entityId){
             ((Packet28EntityVelocity) event.getPacket()).motionX = 0;
-        ((Packet28EntityVelocity) event.getPacket()).motionY = 0;
-        ((Packet28EntityVelocity) event.getPacket()).motionZ = 0;
+            ((Packet28EntityVelocity) event.getPacket()).motionY = 0;
+            ((Packet28EntityVelocity) event.getPacket()).motionZ = 0;
+        }
+
     }
 
     @Override
