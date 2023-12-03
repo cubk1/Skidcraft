@@ -66,13 +66,10 @@ public final class SpeedNCP extends Mod {
 //     Credit   LiquidBounce by CCBlueX
         if (!event.isPre()) return;
         if (MoveUtils.isMoving()) {
-            if (mc.thePlayer.onGround) {
-                MoveUtils.strafe(0.30);
-                mc.thePlayer.motionY = 0.41999998688697815;
-            } else {
-/*                MoveUtils.strafe(MoveUtils.getSpeed() * mc.thePlayer.fallDistance > 0.4f ?
-                        1.0f : 1.01f);*/
+            if(mc.thePlayer.onGround) {
+                mc.thePlayer.jump();
             }
+            MoveUtils.strafe();
         } else {
             mc.thePlayer.motionX = 0.0;
             mc.thePlayer.motionZ = 0.0;
