@@ -25,5 +25,14 @@ public class Start
     }
     static {
     	ImageIO.setUseCache(false);
+    	try {
+    		System.loadLibrary("OpenAL64");
+    	} catch(Throwable t) {
+    		try {
+        		System.loadLibrary("OpenAL32");
+        	} catch(Throwable t2) {
+        		
+        	}
+    	}
     }
 }
