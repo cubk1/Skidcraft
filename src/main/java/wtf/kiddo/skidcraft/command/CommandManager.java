@@ -5,7 +5,6 @@ package wtf.kiddo.skidcraft.command;
 
 import wtf.kiddo.skidcraft.Client;
 import wtf.kiddo.skidcraft.command.commands.CommandBind;
-import wtf.kiddo.skidcraft.command.commands.CommandEsu;
 import wtf.kiddo.skidcraft.command.commands.CommandToggle;
 import wtf.kiddo.skidcraft.command.commands.CommandXray;
 
@@ -20,7 +19,6 @@ public class CommandManager {
         Client.INSTANCE.getEventBus().subscribe(this);
         commands.add(new CommandBind());
         commands.add(new CommandToggle());
-        commands.add(new CommandEsu());
         commands.add(new CommandXray());
     }
 
