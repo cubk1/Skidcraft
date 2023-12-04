@@ -62,8 +62,8 @@ public final class KillAura extends Mod {
                 mc.thePlayer.swingItem();
 //                mc.playerController.attackEntity(mc.thePlayer, (Entity) en);
 //                mc.gameSettings.keyBindUseItem.pressed = false;
-                if (mc.thePlayer.ticksExisted % 2 == 0)
-                    mc.thePlayer.sendQueue.addToSendQueue(new Packet7UseEntity(mc.thePlayer.entityId, ((EntityLiving) en).entityId, 1));
+//                if (mc.thePlayer.ticksExisted % 2 == 0)
+//                    mc.thePlayer.sendQueue.addToSendQueue(new Packet7UseEntity(mc.thePlayer.entityId, ((EntityLiving) en).entityId, 1));
 //                mc.gameSettings.keyBindUseItem.pressed = true;
                 return;
             }
@@ -95,6 +95,8 @@ public final class KillAura extends Mod {
                 int n15 = -1;
 
                 RenderUtils.drawRect1(n4 - 1.0f, n5 + 4.0f, 105.0f, 45.0f, new Color(0, 0, 0, 100));
+                
+                GL11.glEnable(GL11.GL_BLEND);
 
                 mc.fontRenderer.drawString(((EntityLiving) en).getEntityName(), n4 + 22, n5 + 6,-1);
                 GL11.glPushMatrix();
