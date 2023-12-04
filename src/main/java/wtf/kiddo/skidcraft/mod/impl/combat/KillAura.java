@@ -62,8 +62,8 @@ public final class KillAura extends Mod {
                 mc.thePlayer.swingItem();
 //                mc.playerController.attackEntity(mc.thePlayer, (Entity) en);
 //                mc.gameSettings.keyBindUseItem.pressed = false;
-//                if (mc.thePlayer.ticksExisted % 2 == 0)
-//                    mc.thePlayer.sendQueue.addToSendQueue(new Packet7UseEntity(mc.thePlayer.entityId, ((EntityLiving) en).entityId, 1));
+                if (mc.thePlayer.ticksExisted % 2 == 0)
+                    mc.thePlayer.sendQueue.addToSendQueue(new Packet7UseEntity(mc.thePlayer.entityId, ((EntityLiving) en).entityId, 1));
 //                mc.gameSettings.keyBindUseItem.pressed = true;
                 return;
             }
