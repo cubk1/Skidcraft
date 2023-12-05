@@ -392,7 +392,7 @@ public class TcpConnection implements INetworkManager
             this.terminationReason = par1Str;
             this.field_74480_w = par2ArrayOfObj;
             this.isRunning = false;
-            (new TcpMasterThread(this)).start();
+//            (new TcpMasterThread(this)).start();
 
             try
             {
