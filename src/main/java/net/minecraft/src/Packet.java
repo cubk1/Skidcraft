@@ -1,5 +1,6 @@
 package net.minecraft.src;
 
+import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.EOFException;
@@ -184,6 +185,12 @@ public abstract class Packet
      */
     public static void writePacket(Packet par0Packet, DataOutputStream par1DataOutputStream) throws IOException
     {
+//    	ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+//    	par0Packet.writePacketData(new DataOutputStream(byteArrayOutputStream));
+//    	byte[] byteArray = byteArrayOutputStream.toByteArray();
+//    	par1DataOutputStream.write(par0Packet.getPacketId());
+//    	par1DataOutputStream.writeShort(byteArray.length);
+//    	par1DataOutputStream.write(byteArray);
         par1DataOutputStream.write(par0Packet.getPacketId());
         par0Packet.writePacketData(par1DataOutputStream);
         ++sentID;
