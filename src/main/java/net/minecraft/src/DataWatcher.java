@@ -69,12 +69,12 @@ public class DataWatcher
      */
     public byte getWatchableObjectByte(int par1)
     {
-        return ((Byte)this.getWatchedObject(par1).getObject()).byteValue();
+        return ((Number)this.getWatchedObject(par1).getObject()).byteValue();
     }
 
     public short getWatchableObjectShort(int par1)
     {
-        return ((Short)this.getWatchedObject(par1).getObject()).shortValue();
+        return ((Number)this.getWatchedObject(par1).getObject()).shortValue();
     }
 
     /**
@@ -82,7 +82,7 @@ public class DataWatcher
      */
     public int getWatchableObjectInt(int par1)
     {
-        return ((Integer)this.getWatchedObject(par1).getObject()).intValue();
+        return ((Number)this.getWatchedObject(par1).getObject()).intValue();
     }
 
     /**
